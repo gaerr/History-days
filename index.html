@@ -1,0 +1,809 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>역사의 날들</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="theme-color" content="#f1f2f7">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@600;700;900&display=swap">
+<style>
+/* Layout: editorial paper page; one cobalt ink; duotone architecture tiles; time runs left→right in lanes, top→bottom in the chronicle */
+:root{
+  --paper:#f1f2f7; --card:#ffffff; --fg:#171a2e; --sub:#5b6185; --line:#d6d9ea; --soft:#e6e8f5;
+  --ink:#2f3fd0; --mid:#6f7de6; --tint:#dde1fb; --sky1:#eceefc; --sky2:#b7c0f3; --hi:#ffffff;
+  --scrim:rgba(18,22,52,.38);
+  --tk:#3d63f2; --tm:#8ea8ff; --tt:#eef2ff; --ts1:#f7f9ff; --ts2:#c9d7ff; --th:#ffffff;
+  --f-display:'Gloock','Noto Serif KR',Georgia,serif;
+  --f-head:'Noto Serif KR','Gloock',Georgia,serif;
+  --f-body:'IBM Plex Sans KR',system-ui,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0c0f22; --card:#141834; --fg:#eceeff; --sub:#a3a9d2; --line:#283062; --soft:#1a1f44;
+  --ink:#9aa7ff; --mid:#5867e3; --tint:#222a68; --sky1:#161b46; --sky2:#2a3794; --hi:#e3e7ff;
+  --scrim:rgba(0,0,0,.55); --tk:#eef2ff; --tm:#a8bcff; --tt:#5b78ee; --ts1:#3b56cf; --ts2:#7491ff; --th:#ffffff; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0c0f22; --card:#141834; --fg:#eceeff; --sub:#a3a9d2; --line:#283062; --soft:#1a1f44;
+  --ink:#9aa7ff; --mid:#5867e3; --tint:#222a68; --sky1:#161b46; --sky2:#2a3794; --hi:#e3e7ff;
+  --scrim:rgba(0,0,0,.55); --tk:#eef2ff; --tm:#a8bcff; --tt:#5b78ee; --ts1:#3b56cf; --ts2:#7491ff; --th:#ffffff; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--paper);color:var(--fg);font:15px/1.7 var(--f-body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--paper)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+h1,h2,h3,h4{text-wrap:balance;margin:0}
+p{margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.sub{color:var(--sub)}
+.yr{font-family:var(--f-display);font-weight:400;color:var(--ink);line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.yr .bc{font-family:var(--f-mono);font-size:.32em;letter-spacing:.1em;vertical-align:.95em;margin-right:.2em}
+
+/* tile art */
+.tile{display:block;width:100%;height:100%}
+.tile .k{fill:var(--tk)}.tile .m{fill:var(--tm)}.tile .l{fill:var(--tt)}.tile .h{fill:var(--th)}
+.tile .sk{fill:none;stroke:var(--tk)}.tile .sl{fill:none;stroke:var(--tt)}.tile .sh{fill:none;stroke:var(--th)}
+
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:20px;height:56px}
+.brand{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:var(--fg);white-space:nowrap}
+.brand b{font-family:var(--f-head);font-weight:900;font-size:18px;letter-spacing:-.02em}
+.brand span{color:var(--ink)}
+.top nav{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.top nav::-webkit-scrollbar{display:none}
+.top nav a{color:var(--sub);text-decoration:none;font-size:13.5px;padding:6px 10px;border-radius:6px;white-space:nowrap}
+.top nav a:hover{color:var(--ink);background:var(--soft)}
+
+/* hero */
+.hero{padding-block:44px 28px}
+.heroGrid{display:grid;grid-template-columns:minmax(0,1fr);gap:28px}
+.hero h1{font-family:var(--f-display);font-weight:400;color:var(--ink);font-size:clamp(52px,9vw,112px);line-height:.86;letter-spacing:-.02em;text-transform:uppercase}
+.hero h1 small{display:block;font-family:var(--f-head);font-weight:900;font-size:clamp(22px,3vw,30px);letter-spacing:-.02em;text-transform:none;color:var(--fg);margin-top:14px}
+.heroLede{max-width:560px;font-size:16.5px;color:var(--sub);margin-top:14px}
+.heroLede b{color:var(--fg);font-weight:600}
+.facts{display:flex;flex-wrap:wrap;gap:22px;margin-top:22px}
+.facts div{display:flex;flex-direction:column}
+.facts .yr{font-size:34px}
+.facts span:last-child{font-size:12.5px;color:var(--sub)}
+.collageWrap{overflow-x:auto;scrollbar-width:thin;padding-bottom:6px}
+.collage{display:grid;grid-template-columns:repeat(8,minmax(118px,1fr));gap:14px;min-width:1000px;align-items:start}
+.cItem{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:8px}
+.cItem:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.cItem .yr{font-size:30px}
+.cItem .ph{aspect-ratio:3/4;overflow:hidden;background:var(--ts2);transition:transform .35s ease}
+.cItem:hover .ph{transform:translateY(-4px)}
+.cItem p{font-size:12px;line-height:1.45;color:var(--sub);max-width:15ch}
+.cItem p b{display:block;color:var(--fg);font-weight:600;font-size:12.5px}
+.cItem:nth-child(1){margin-top:110px}.collage{min-width:980px}.cItem:nth-child(2){margin-top:30px}.cItem:nth-child(3){margin-top:150px}.cItem:nth-child(4){margin-top:0}
+.cItem:nth-child(5){margin-top:90px}.cItem:nth-child(6){margin-top:20px}.cItem:nth-child(7){margin-top:130px}.cItem:nth-child(8){margin-top:50px}
+.cItem.flip{flex-direction:column-reverse}
+.heroFoot{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid var(--line);margin-top:22px;padding-top:12px}
+.heroFoot .mono{color:var(--ink);letter-spacing:.3em}
+
+/* sections */
+section.sec{padding-block:56px 20px}
+.secHead{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;margin-bottom:22px;max-width:760px}
+.secHead .mono{color:var(--ink)}
+.secHead h2{font-family:var(--f-head);font-weight:900;font-size:clamp(26px,3.6vw,38px);letter-spacing:-.03em;line-height:1.2}
+.secHead p{color:var(--sub);max-width:62ch}
+.rule{height:1px;background:var(--line);border:0;margin:0}
+
+/* controls */
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;padding:6px 12px;font-size:13px;line-height:1.3}
+.chip:hover{border-color:var(--ink);color:var(--ink)}
+.chip.on{background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:600}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--paper);border-radius:8px;padding:9px 14px;font-weight:600;font-size:13.5px}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn:hover{filter:brightness(1.08)}
+.field{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:10px 12px;min-width:0;width:100%}
+label.tog{display:inline-flex;gap:7px;align-items:center;font-size:13px;color:var(--sub);cursor:pointer}
+label.tog input{accent-color:var(--ink);width:16px;height:16px}
+
+/* lanes */
+.laneShell{border:1px solid var(--line);background:var(--card);border-radius:4px}
+.laneTop{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line)}
+.cursorRead{display:flex;align-items:baseline;gap:12px}
+.cursorRead .yr{font-size:40px}
+.cursorRead .mono{color:var(--sub)}
+.laneBody{display:flex}
+.laneNames{flex:0 0 132px;border-right:1px solid var(--line);background:var(--card);position:relative;z-index:2}
+.laneNames div{display:flex;align-items:center;padding:0 12px;font-size:12.5px;font-weight:600;border-top:1px solid var(--soft);line-height:1.25}
+.laneNames div small{display:block;font-weight:400;color:var(--sub);font-size:11px}
+.laneScroll{overflow-x:auto;flex:1;min-width:0;cursor:crosshair;scrollbar-width:thin;overscroll-behavior-x:contain}
+#lanes{display:block}
+#lanes text{font-family:var(--f-body)}
+#lanes .eraBand{fill:var(--soft)}
+#lanes .eraBand.alt{fill:var(--card)}
+#lanes .eraLbl{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;fill:var(--ink)}
+#lanes .tick{stroke:var(--line)}
+#lanes .tickLbl{font-family:var(--f-mono);font-size:10px;fill:var(--sub)}
+#lanes .laneSep{stroke:var(--soft)}
+#lanes .node{cursor:pointer}
+#lanes .node circle{fill:var(--card);stroke:var(--ink);stroke-width:2}
+#lanes .node text{font-size:12px;fill:var(--fg)}
+#lanes .node:hover circle,#lanes .node.hot circle{fill:var(--ink)}
+#lanes .node.near circle{fill:var(--ink)}
+#lanes .node.near text{font-weight:600}
+#lanes .node.dim{opacity:.32}
+#lanes .node.done circle{stroke-dasharray:none;fill:var(--mid)}
+#lanes .bk path.dia{fill:var(--paper);stroke:var(--mid);stroke-width:1.6}
+#lanes .bk text{font-size:11.5px;fill:var(--sub);font-style:normal}
+#lanes .bk .arc{fill:none;stroke:var(--mid);stroke-width:1.2;stroke-dasharray:3 3}
+#lanes .bk .setbar{fill:var(--tint);stroke:var(--mid);stroke-width:.8}
+#lanes .bk:hover path.dia{fill:var(--mid)}
+#lanes .link{fill:none;stroke:var(--mid);stroke-width:1.2;opacity:.35}
+#lanes .link.hot{stroke:var(--ink);opacity:1;stroke-width:2}
+#lanes .cur{stroke:var(--ink);stroke-width:1.5}
+#lanes .curBand{fill:var(--ink);opacity:.06}
+#lanes .curTag rect{fill:var(--ink)}
+#lanes .curTag text{fill:var(--paper);font-family:var(--f-mono);font-size:11px}
+.laneFoot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 14px;border-top:1px solid var(--line)}
+.laneFoot input[type=range]{flex:1 1 260px;accent-color:var(--ink)}
+.jumpers{display:flex;flex-wrap:wrap;gap:6px}
+
+/* slice */
+.slice{margin-top:22px;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:22px;align-items:start}
+.sliceGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.sCell{background:var(--card);padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.sCell .mono{color:var(--sub);font-size:10.5px}
+.sCell button{all:unset;cursor:pointer;display:block}
+.sCell button:focus-visible{outline:2px solid var(--ink)}
+.sCell .t{font-weight:600;font-size:14px;line-height:1.4}
+.sCell .t:hover{color:var(--ink)}
+.sCell .d{font-size:12px;color:var(--sub)}
+.sCell .nx{font-size:11.5px;color:var(--sub);border-top:1px dashed var(--line);padding-top:5px;margin-top:3px}
+.sCell.empty .t{color:var(--sub);font-weight:400}
+.sCell.kor{background:var(--soft)}
+.strata{display:flex;flex-direction:column;border:1px solid var(--line);background:var(--card)}
+.stratum{display:grid;grid-template-columns:76px minmax(0,1fr);border-top:1px solid var(--line)}
+.stratum:first-child{border-top:0}
+.stratum>span{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;padding:12px 10px;color:var(--ink);border-right:1px solid var(--line);background:var(--soft)}
+.stratum:nth-child(2)>span{background:color-mix(in srgb,var(--tint) 60%,var(--card))}
+.stratum:nth-child(3)>span{background:var(--tint)}
+.stratum p{padding:12px 14px;font-size:14px}
+.stratum p b{display:block;font-family:var(--f-head);font-weight:700;font-size:16px;margin-bottom:2px}
+.sliceHead{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:10px}
+.sliceHead h3{font-family:var(--f-head);font-weight:700;font-size:19px}
+
+/* map */
+.mapGrid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:22px;align-items:start}
+.mapBox{border:1px solid var(--line);background:var(--card);position:relative}
+#world{display:block;width:100%;height:auto;aspect-ratio:1000/470}
+#world .sea{fill:var(--sky1)}
+#world .landP{fill:var(--tint);stroke:var(--mid);stroke-width:.5;vector-effect:non-scaling-stroke}
+#world .pin{cursor:pointer}
+#world .pin .ring{fill:none;stroke:var(--ink);vector-effect:non-scaling-stroke;stroke-width:1.2}
+#world .pin .dot{fill:var(--card);stroke:var(--ink);vector-effect:non-scaling-stroke;stroke-width:2}
+#world .pin.live .dot{fill:var(--ink)}
+#world .pin.sel .dot{fill:var(--mid)}
+#world .pin text{fill:var(--fg);font-family:var(--f-body);font-weight:600;paint-order:stroke;stroke:var(--sky1);stroke-linejoin:round}
+#world .pin.live text{fill:var(--ink)}
+#world .pin.live .ring{animation:pulse 2.4s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pulse{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(2.6)}}
+.mapBar{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;padding:10px 12px;border-top:1px solid var(--line)}
+.mapNote{font-size:11.5px;color:var(--sub);padding:0 12px 10px}
+.regionCard{border:1px solid var(--line);background:var(--card);padding:18px;display:flex;flex-direction:column;gap:12px}
+.regionCard h3{font-family:var(--f-head);font-weight:900;font-size:26px;letter-spacing:-.02em}
+.regionCard .strip{height:46px}
+.regionCard ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;max-height:290px;overflow:auto;border-top:1px solid var(--line)}
+.regionCard li button{all:unset;cursor:pointer;display:grid;grid-template-columns:84px minmax(0,1fr);gap:10px;padding:8px 2px;border-bottom:1px solid var(--soft);width:100%;box-sizing:border-box;font-size:13.5px}
+.regionCard li button:hover{color:var(--ink)}
+.regionCard li button:focus-visible{outline:2px solid var(--ink)}
+.regionCard li .yy{font-family:var(--f-mono);font-size:11.5px;color:var(--sub);padding-top:2px}
+.regionCard li.near button{color:var(--ink);font-weight:600}
+
+/* chronicle */
+.filters{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:10px;margin-bottom:12px}
+.chron{list-style:none;margin:16px 0 0;padding:0;border-top:2px solid var(--ink)}
+.row{display:grid;grid-template-columns:150px 92px minmax(0,1fr) 120px;gap:20px;padding:18px 0;border-bottom:1px solid var(--line);align-items:start;cursor:pointer}
+.row:hover .rt{color:var(--ink)}
+.row:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.row .yr{font-size:40px}
+.row .ph{width:92px;aspect-ratio:3/4;overflow:hidden}
+.row .rt{font-family:var(--f-head);font-weight:700;font-size:19px;letter-spacing:-.02em;line-height:1.35}
+.row .rd{font-size:14px;color:var(--sub);margin-top:4px}
+.row .lay{display:grid;grid-template-columns:42px minmax(0,1fr);gap:4px 10px;margin-top:10px;font-size:12.5px}
+.row .lay span{font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;color:var(--ink);padding-top:2px}
+.row .lay p{color:var(--sub)}
+.row .meta{display:flex;flex-direction:column;align-items:flex-end;gap:6px;font-size:12px;color:var(--sub);text-align:right}
+.badge{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 9px;font-size:11.5px;color:var(--sub)}
+.badge.ok{border-color:var(--ink);color:var(--ink)}
+.moreWrap{display:flex;justify-content:center;padding:22px 0}
+
+/* archive */
+.arch{display:grid;grid-template-columns:240px minmax(0,1fr);gap:26px;align-items:start}
+.civIdx{display:flex;flex-direction:column;border-top:2px solid var(--ink);position:sticky;top:76px}
+.civIdx button{all:unset;cursor:pointer;display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;align-items:center;padding:8px 4px;border-bottom:1px solid var(--line);font-size:14px}
+.civIdx button .ph{width:34px;height:42px;overflow:hidden}
+.civIdx button small{display:block;color:var(--sub);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.civIdx button.on{color:var(--ink);font-weight:600}
+.civIdx button.on .ph{outline:2px solid var(--ink);outline-offset:1px}
+.civIdx button:focus-visible{outline:2px solid var(--ink)}
+.civHead{display:grid;grid-template-columns:180px minmax(0,1fr);gap:22px;align-items:end}
+.civHead .ph{aspect-ratio:3/4;overflow:hidden}
+.civHead h3{font-family:var(--f-head);font-weight:900;font-size:clamp(30px,4vw,44px);letter-spacing:-.03em;line-height:1.1}
+.flow{display:flex;flex-wrap:wrap;gap:0;margin-top:12px;font-size:13px}
+.flow span{padding:4px 10px;border:1px solid var(--line);background:var(--card);margin:0 -1px -1px 0}
+.flow span:first-child{border-left:3px solid var(--ink)}
+.civBody{display:flex;flex-direction:column;gap:26px;margin-top:26px}
+.civBody h4{font-family:var(--f-mono);font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-bottom:8px}
+.civBody .story{font-size:16px;line-height:1.85;max-width:68ch}
+.cmp{border:1px solid var(--line);background:var(--card);overflow-x:auto}
+.cmp svg{display:block;min-width:620px;width:100%}
+.cmp text{font-family:var(--f-mono);font-size:10px;fill:var(--sub)}
+.cmp .lab{font-family:var(--f-body);font-size:11.5px;font-weight:600;fill:var(--fg)}
+.cmp .yb{fill:var(--ink)}
+.cmp .ev{fill:var(--card);stroke:var(--ink);stroke-width:1.6;cursor:pointer}
+.cmp .kev{fill:var(--card);stroke:var(--mid);stroke-width:1.6;cursor:pointer}
+.cmp .kb{fill:var(--mid)}
+.cmp .base{stroke:var(--line)}
+.cmp .era{fill:var(--soft)}
+.chap{border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:10px}
+.chap h5{font-family:var(--f-head);font-weight:700;font-size:20px;margin:0;letter-spacing:-.02em}
+.chap .strata .stratum p{font-size:14px}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.three div{background:var(--card);padding:14px;font-size:14px}
+.three b{display:block;font-family:var(--f-mono);font-weight:500;font-size:10.5px;letter-spacing:.12em;color:var(--ink);margin-bottom:6px}
+.linkList{display:flex;flex-wrap:wrap;gap:6px}
+details.quiz{border:1px dashed var(--mid);padding:14px 16px}
+details.quiz summary{cursor:pointer;font-weight:600}
+details.quiz p{margin-top:8px;color:var(--sub)}
+
+/* books */
+.bookGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:22px 16px;margin-top:16px}
+.book{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:8px}
+.book:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.book .ph{aspect-ratio:4/5;overflow:hidden;position:relative}
+.book .ph .cap{position:absolute;left:0;bottom:0;background:var(--paper);padding:3px 8px 0 0;font-family:var(--f-mono);font-size:10.5px;color:var(--ink);letter-spacing:.06em}
+.book b{font-family:var(--f-head);font-weight:700;font-size:17px;letter-spacing:-.02em;line-height:1.3}
+.book small{color:var(--sub);font-size:12px;line-height:1.45}
+.book:hover b{color:var(--ink)}
+
+/* drawer */
+.scrim{position:fixed;inset:0;background:var(--scrim);z-index:50;opacity:0;pointer-events:none;transition:opacity .25s}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);background:var(--paper);z-index:51;transform:translateX(102%);transition:transform .32s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column;border-left:1px solid var(--line);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);padding-right:env(safe-area-inset-right,0px)}
+.drawer.on{transform:none}
+.dBar{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 16px;border-bottom:1px solid var(--line)}
+.dBar .grp{display:flex;gap:6px}
+.dBody{overflow-y:auto;padding:0 20px 40px;display:flex;flex-direction:column;gap:22px}
+.dHero{margin:0 -20px;height:190px;overflow:hidden;position:relative}
+.dHero .yr{position:absolute;left:20px;bottom:12px;font-size:64px;color:var(--hi);text-shadow:0 1px 14px rgba(30,50,140,.45)}
+.dTitle h3{font-family:var(--f-head);font-weight:900;font-size:28px;letter-spacing:-.03em;line-height:1.25}
+.dTitle .mono{color:var(--ink);display:block;margin-bottom:6px}
+.dTitle p{margin-top:8px;font-size:15.5px}
+.dSec h4{font-family:var(--f-mono);font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-bottom:10px}
+.rel{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.rel button{all:unset;cursor:pointer;display:grid;grid-template-columns:68px minmax(0,1fr);gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
+.rel button:hover .tt{color:var(--ink)}
+.rel button:focus-visible{outline:2px solid var(--ink)}
+.rel .dir{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;color:var(--sub);padding-top:3px}
+.rel .tt{font-weight:600}
+.rel small{display:block;color:var(--sub);font-size:12px;font-weight:400}
+.notes{width:100%;min-height:110px;resize:vertical;border:1px solid var(--line);background:var(--card);border-radius:6px;padding:12px}
+.saveRow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px}
+.status{font-size:12.5px;color:var(--ink)}
+.gap{border:1px solid var(--line);background:var(--card)}
+.gap svg{display:block;width:100%}
+.gap text{font-family:var(--f-mono);font-size:10px;fill:var(--sub)}
+.gap .w{fill:var(--ink)}.gap .s{fill:var(--tint);stroke:var(--mid)}.gap .ar{fill:none;stroke:var(--ink);stroke-dasharray:3 3}
+.gap .base{stroke:var(--line)}
+.gap .lab{font-family:var(--f-body);font-size:11.5px;fill:var(--fg);font-weight:600}
+
+/* records & method */
+.rec{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:26px}
+.meter{display:flex;flex-direction:column;gap:6px;padding:16px 0;border-bottom:1px solid var(--line)}
+.meter .yr{font-size:44px}
+.meter .bar{height:6px;background:var(--soft)}
+.meter .bar i{display:block;height:100%;background:var(--ink);width:0;transition:width .5s}
+.doneChips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.layers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line)}
+.layers div{padding:18px;border-left:1px solid var(--line);background:var(--card);display:flex;flex-direction:column;gap:8px}
+.layers div:first-child{border-left:0}
+.layers .yr{font-size:36px}
+.layers b{font-family:var(--f-head);font-size:17px}
+.layers p{font-size:13.5px;color:var(--sub)}
+.layers div:nth-child(2){background:color-mix(in srgb,var(--soft) 50%,var(--card))}
+.layers div:nth-child(3){background:var(--soft)}
+.layers div:nth-child(4){background:color-mix(in srgb,var(--tint) 70%,var(--card))}
+footer{padding-block:40px 60px;color:var(--sub);font-size:12.5px;border-top:1px solid var(--line);margin-top:50px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+@media (min-width:900px){.heroText{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;align-items:end}}
+.dBody>*{flex-shrink:0}
+.sCell .t,.sCell .d{display:block}
+@media (max-width:900px){
+  .slice,.mapGrid,.rec{grid-template-columns:minmax(0,1fr)}
+  .arch{grid-template-columns:minmax(0,1fr)}
+  .civIdx{position:static;flex-direction:row;overflow-x:auto;border-top:0;gap:6px;padding-bottom:4px}
+  .civIdx button{grid-template-columns:28px auto;border:1px solid var(--line);padding:4px 10px 4px 4px;white-space:nowrap;flex:0 0 auto}
+  .civIdx button .ph{width:28px;height:34px}
+  .civIdx button small{display:none}
+  .layers{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .layers div:nth-child(3){border-left:0}
+  .layers div:nth-child(n+3){border-top:1px solid var(--line)}
+}
+@media (max-width:640px){
+  .top nav a{padding:6px 7px;font-size:12.5px}
+  .brand span{display:none}
+  .laneNames{flex-basis:78px}
+  .laneNames div{padding:0 8px;font-size:11.5px}
+  .laneNames div small{display:none}
+  .sliceGrid{grid-template-columns:minmax(0,1fr)}
+  .filters{grid-template-columns:minmax(0,1fr)}
+  .row{grid-template-columns:64px minmax(0,1fr);gap:4px 14px}
+  .row .yr{font-size:26px;grid-column:1/-1}
+  .row .ph{width:64px}
+  .row .meta{grid-column:2;flex-direction:row;justify-content:flex-start;align-items:center}
+  .civHead{grid-template-columns:96px minmax(0,1fr);gap:14px}
+  .three{grid-template-columns:minmax(0,1fr)}
+  .layers{grid-template-columns:minmax(0,1fr)}
+  .layers div{border-left:0;border-top:1px solid var(--line)}
+  .layers div:first-child{border-top:0}
+  .dHero{height:150px}
+  .cursorRead .yr{font-size:32px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--ts1)"/><stop offset="1" style="stop-color:var(--ts2)"/></linearGradient>
+    <linearGradient id="gShade" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--th);stop-opacity:.35"/><stop offset=".55" style="stop-color:var(--th);stop-opacity:0"/></linearGradient>
+    <pattern id="pDots" width="3.2" height="3.2" patternUnits="userSpaceOnUse"><circle cx="1.6" cy="1.6" r=".5" style="fill:var(--tk)"/></pattern>
+  </defs>
+</svg>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="#top"><b>역사의 날들</b><span class="mono">History Days</span></a>
+  <nav aria-label="섹션">
+    <a href="#lanesec">동시대 연표</a><a href="#mapsec">지도</a><a href="#chronsec">연대기</a><a href="#archsec">문명</a><a href="#booksec">고전</a><a href="#recsec">기록</a>
+  </nav>
+</div></header>
+
+<main id="top">
+  <section class="hero wrap" aria-label="소개">
+    <div class="heroGrid">
+      <div class="heroText">
+        <div><div class="mono sub">World history · Bible · Korea</div>
+        <h1>History<br>Days<small>같은 해, 다른 땅의 역사</small></h1></div>
+        <div><p class="heroLede">한 줄짜리 연표 대신 <b>지역별 레인</b>을 나란히 놓았습니다. 연도 커서를 옮기면 그 해의 세계, 성경 시대의 배경, 동시대 한국이 <b>한 단면</b>으로 겹쳐 보입니다.</p>
+        <div class="facts" id="facts"></div></div>
+      </div>
+      <div class="collageWrap"><div class="collage" id="collage"></div></div>
+    </div>
+    <div class="heroFoot"><span class="sub" style="font-size:12.5px">사진처럼 보이는 그림은 모두 지역 건축을 단순화한 일러스트입니다.</span><span class="mono">Across time</span></div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="sec wrap" id="lanesec">
+    <div class="secHead">
+      <span class="mono">01 · Synchronic lanes</span>
+      <h2>동시대 연표</h2>
+      <p>지역마다 한 줄씩, 시간은 왼쪽에서 오른쪽으로 흐릅니다. 연표를 누르거나 슬라이더를 움직여 연도 커서를 옮겨 보세요. 점선 곡선은 사건 사이의 원인과 결과, 마름모는 고전 작품이 기록된 시점입니다.</p>
+    </div>
+    <div class="laneShell">
+      <div class="laneTop">
+        <div class="cursorRead"><span class="yr" id="curYear" aria-live="polite"></span><span class="mono" id="curEra"></span></div>
+        <div class="ctrl">
+          <label class="tog"><input type="checkbox" id="showLinks" checked> 인과선</label>
+          <label class="tog"><input type="checkbox" id="showBooks" checked> 고전</label>
+        </div>
+      </div>
+      <div class="laneBody">
+        <div class="laneNames" id="laneNames" aria-hidden="true"></div>
+        <div class="laneScroll" id="laneScroll"><svg id="lanes" role="img" aria-label="지역별 평행 연표"></svg></div>
+      </div>
+      <div class="laneFoot">
+        <label for="yearRange" class="mono sub">연도</label>
+        <input type="range" id="yearRange" min="0" max="1000" step="1" aria-label="연도 커서 이동">
+        <div class="jumpers" id="jumpers"></div>
+      </div>
+    </div>
+
+    <div class="slice">
+      <div>
+        <div class="sliceHead"><h3 id="sliceTitle">동시대 단면</h3><span class="mono sub">지역별 직전 사건 · 다음 사건</span></div>
+        <div class="sliceGrid" id="sliceGrid"></div>
+      </div>
+      <div>
+        <div class="sliceHead"><h3>세 겹으로 본 이 시점</h3><span class="mono sub">커서에 가장 가까운 사건</span></div>
+        <div class="strata" id="sliceStrata"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="mapsec">
+    <div class="secHead">
+      <span class="mono">02 · Space × time</span>
+      <h2>시간을 따라 켜지는 지도</h2>
+      <p>위 연표의 커서와 연결되어 있습니다. 선택한 연도 앞뒤 150년 안에 기록된 사건이 있는 지역이 채워진 점으로 표시됩니다. 지역을 누르면 그 땅의 사건이 시간순으로 펼쳐집니다.</p>
+    </div>
+    <div class="mapGrid">
+      <div class="mapBox">
+        <svg id="world" viewBox="0 0 1000 470" role="img" aria-label="지역 선택 세계 지도"></svg>
+        <div class="mapBar">
+          <div class="ctrl" id="zooms"></div>
+          <span class="mono sub" id="mapYear"></span>
+        </div>
+        <p class="mapNote">해안선은 실제 지형이며, 점은 각 문명권의 대략적인 중심입니다. 당시의 국경이나 영토를 뜻하지 않습니다.</p>
+      </div>
+      <div class="regionCard" id="regionCard" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="chronsec">
+    <div class="secHead">
+      <span class="mono">03 · Chronicle</span>
+      <h2>연대기</h2>
+      <p>오래된 사건부터 아래로 읽어 내려갑니다. 각 사건 아래에 같은 시기의 성경 연구 포인트와 한국사가 함께 붙어 있습니다.</p>
+    </div>
+    <div class="filters">
+      <input class="field" id="search" type="search" placeholder="알렉산드로스, 페르시아, 고려 검색" aria-label="사건 검색">
+      <select class="field" id="period" aria-label="시대 선택">
+        <option value="all">전체 시대</option><option value="ancient">고대 · 서기 500년까지</option><option value="medieval">중세 · 501~1500년</option><option value="modern">근현대 · 1501년 이후</option>
+      </select>
+    </div>
+    <div class="ctrl" id="regionPills"></div>
+    <p class="sub" id="count" style="margin-top:10px;font-size:13px"></p>
+    <ol class="chron" id="chron"></ol>
+    <div class="moreWrap" id="moreWrap"></div>
+  </section>
+
+  <section class="sec wrap" id="archsec">
+    <div class="secHead">
+      <span class="mono">04 · Civilizations</span>
+      <h2>문명 아카이브</h2>
+      <p>왕조의 흐름과 강의 노트를 한 곳에 모았습니다. 시간축 비교표에서 그 문명의 전환점과 같은 시기의 한국사를 위아래로 나란히 볼 수 있습니다.</p>
+    </div>
+    <div class="arch">
+      <div class="civIdx" id="civIdx" role="tablist" aria-label="문명 선택"></div>
+      <article id="civView" aria-live="polite"></article>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="booksec">
+    <div class="secHead">
+      <span class="mono">05 · Classics</span>
+      <h2>고전 도서관</h2>
+      <p>작품이 기록된 때와 이야기의 배경이 된 때는 다를 수 있습니다. 작품을 열면 두 시점 사이의 거리가 시간축 위에 표시됩니다.</p>
+    </div>
+    <input class="field" id="bookSearch" type="search" placeholder="작품, 나라, 인물 검색" aria-label="고전 작품 검색" style="max-width:420px">
+    <div class="bookGrid" id="bookGrid"></div>
+  </section>
+
+  <section class="sec wrap" id="recsec">
+    <div class="secHead">
+      <span class="mono">06 · My study</span>
+      <h2>나의 탐험 기록</h2>
+      <p>진행도와 노트는 이 브라우저에만 저장됩니다. 브라우저 데이터를 지우면 함께 지워집니다.</p>
+    </div>
+    <div class="rec">
+      <div>
+        <div class="meter"><span class="mono sub">사건 학습</span><span class="yr" id="mEv"></span><div class="bar"><i id="bEv"></i></div></div>
+        <div class="meter"><span class="mono sub">문명 강의</span><span class="yr" id="mCh"></span><div class="bar"><i id="bCh"></i></div></div>
+        <div class="doneChips" id="doneChips"></div>
+      </div>
+      <div>
+        <label for="memo" class="mono" style="color:var(--ink)">연구 노트</label>
+        <textarea id="memo" class="notes" style="min-height:180px;margin-top:8px" placeholder="성경과 세계사, 한국사를 비교하며 발견한 점을 기록하세요."></textarea>
+        <div class="saveRow"><button class="btn" id="memoSave" type="button">노트 저장</button><button class="btn ghost" id="memoCopy" type="button">전체 기록 복사</button><button class="btn ghost" id="memoExport" type="button">텍스트 파일로 내보내기</button><span class="status" id="memoStatus" role="status"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="method">
+    <div class="secHead">
+      <span class="mono">Method</span>
+      <h2>근거의 네 층위</h2>
+      <p>같은 사건도 어떤 근거로 말하느냐에 따라 확실성이 다릅니다. 예를 들어 트로이 전쟁의 전승과 호메로스 서사시의 형성 시기는 같지 않으며, 출애굽의 정확한 연대는 확정되지 않았습니다.</p>
+    </div>
+    <div class="layers">
+      <div><span class="yr">I</span><b>문헌 기록</b><p>당대나 후대에 쓰인 글. 누가, 언제, 왜 썼는지를 함께 따집니다.</p></div>
+      <div><span class="yr">II</span><b>고고학 자료</b><p>유적과 유물로 확인된 사실. 해석의 범위가 문헌과 다를 수 있습니다.</p></div>
+      <div><span class="yr">III</span><b>추정 연대</b><p>학자들이 여러 근거를 맞춰 계산한 연도. 학설에 따라 달라집니다.</p></div>
+      <div><span class="yr">IV</span><b>신학적 해석</b><p>본문이 신앙 공동체에 주는 의미. 역사적 사실 판단과 구분해 읽습니다.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>역사의 날들 v7 · 성경과 세계사, 한국사를 함께 읽는 탐험 연표</span><span>외부 API 없이 동작 · 항목별 사료 출처는 후속 검증이 필요합니다</span></div></footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dTitle" aria-hidden="true">
+  <div class="dBar"><div class="grp"><button class="chip" id="dPrev" type="button">← 이전</button><button class="chip" id="dNext" type="button">다음 →</button></div><button class="chip" id="dClose" type="button">닫기 ✕</button></div>
+  <div class="dBody" id="dBody"></div>
+</aside>
+
+<script>
+(()=>{'use strict';
+const D={"events":[{"id":0,"year":-2100,"region":"메소포타미아","title":"우르 제3왕조와 도시 문명","desc":"수메르 도시국가의 행정·문자 문화가 발전했다.","bible":"고대 근동의 도시와 족장 전승의 배경을 이해한다.","korea":"고조선 이전 한반도 신석기 문화"},{"id":1,"year":-1900,"region":"이집트","title":"이집트 중왕국","desc":"나일강 유역의 왕권과 관료제가 정비되었다.","bible":"요셉 이야기의 이집트 배경은 특정 왕조로 확정되지 않는다.","korea":"한반도 신석기 문화"},{"id":2,"year":-1750,"region":"메소포타미아","title":"함무라비와 바빌로니아","desc":"법전과 왕권, 고대 근동 사회 질서를 살펴본다.","bible":"모세 율법과 고대 법전의 공통점·차이를 비교한다.","korea":"한반도 신석기 후기"},{"id":3,"year":-1600,"region":"중국","title":"상 왕조와 청동기","desc":"청동 제기와 갑골문이 발달한 시대.","bible":"성경의 고대 근동과 별도로 성장한 동아시아 문명.","korea":"한반도 청동기시대의 시작 연대는 지역별로 다름"},{"id":4,"year":-1450,"region":"이집트","title":"신왕국과 제국의 확장","desc":"투트모세 3세 이후 레반트까지 영향력이 확대되었다.","bible":"출애굽의 역사적 연대와 경로는 논쟁적이다.","korea":"한반도 청동기 문화의 형성 과정"},{"id":5,"year":-1250,"region":"그리스","title":"미케네 문명과 트로이 전승","desc":"후기 청동기 에게해 세계와 트로이 전쟁의 전승.","bible":"사사 시대 추정 연대와 비교하되 직접적 연결은 미확인.","korea":"한반도 청동기 문화"},{"id":6,"year":-1200,"region":"지중해","title":"청동기시대 붕괴","desc":"동지중해의 여러 왕국이 붕괴하거나 재편되었다.","bible":"블레셋을 포함한 레반트의 정치 변화 연구.","korea":"한반도 청동기 문화"},{"id":7,"year":-1050,"region":"이스라엘","title":"이스라엘 왕정의 형성","desc":"사울·다윗·솔로몬의 왕정에 관한 성경 기록.","bible":"사무엘상하·열왕기상; 왕국 규모에 학술적 논쟁.","korea":"한반도 청동기 문화"},{"id":8,"year":-900,"region":"그리스","title":"호메로스 서사시의 전승","desc":"일리아스와 오디세이아가 구전 전통에서 형성되었다.","bible":"영웅·신·운명에 대한 그리스 세계관과 성경 비교.","korea":"한반도 청동기 문화"},{"id":9,"year":-850,"region":"이란","title":"메디아와 이란 고원","desc":"이란계 집단들이 고원 지역에서 정치 세력을 형성했다.","bible":"후대 페르시아 제국의 역사적 배경.","korea":"고조선 관련 후대 문헌 전승"},{"id":10,"year":-722,"region":"메소포타미아","title":"앗수르와 북이스라엘 멸망","desc":"신앗수르 제국이 사마리아를 정복했다.","bible":"열왕기하 17장; 제국의 강제 이주 정책.","korea":"고조선 관련 문헌 전승과 청동기 문화"},{"id":11,"year":-600,"region":"그리스","title":"그리스 폴리스와 철학의 태동","desc":"아테네·스파르타의 정치문화와 이오니아 철학.","bible":"신약 시대 헬라 사상의 먼 배경.","korea":"한반도 청동기·초기 철기 문화"},{"id":12,"year":-586,"region":"메소포타미아","title":"바벨론과 예루살렘 함락","desc":"신바빌로니아가 예루살렘을 함락하고 성전을 파괴했다.","bible":"열왕기하 25장·예레미야·에스겔.","korea":"고조선 관련 기록과 초기 철기 문화"},{"id":13,"year":-550,"region":"이란","title":"키루스와 아케메네스 제국","desc":"키루스 2세가 메디아를 정복하고 페르시아 제국을 확대했다.","bible":"이사야 44~45장과 에스라 1장.","korea":"고조선과 초기 철기 문화"},{"id":14,"year":-539,"region":"이란","title":"페르시아의 바빌론 정복","desc":"키루스가 바빌론을 점령했다.","bible":"유다 포로 귀환의 국제 정치적 배경.","korea":"고조선 관련 기록과 초기 철기 문화"},{"id":15,"year":-490,"region":"그리스","title":"그리스·페르시아 전쟁","desc":"마라톤 전투와 이후 살라미스 해전으로 이어진 충돌.","bible":"에스더·에스라 시대의 페르시아 세계와 비교.","korea":"고조선 관련 문헌과 철기 문화"},{"id":16,"year":-450,"region":"그리스","title":"아테네 민주정과 페리클레스","desc":"고전기 아테네의 정치·예술·건축이 발전했다.","bible":"제2성전기 유대 공동체와 동시대 비교.","korea":"고조선 관련 기록과 철기 문화"},{"id":17,"year":-399,"region":"그리스","title":"소크라테스의 죽음","desc":"아테네 철학과 윤리 탐구의 전환점.","bible":"성경 지혜문학과 철학적 질문의 비교.","korea":"고조선 관련 기록과 철기 문화"},{"id":18,"year":-336,"region":"그리스","title":"알렉산드로스 대왕 즉위","desc":"마케도니아의 알렉산드로스가 왕위에 올랐다.","bible":"다니엘서의 제국 해석은 역사비평과 신학 해석을 구분.","korea":"고조선·철기 문화"},{"id":19,"year":-331,"region":"이란","title":"가우가멜라 전투","desc":"알렉산드로스가 다리우스 3세를 격파했다.","bible":"페르시아에서 헬레니즘으로 이어지는 제2성전기 배경.","korea":"고조선·철기 문화"},{"id":20,"year":-323,"region":"그리스","title":"알렉산드로스 사망과 헬레니즘","desc":"후계 왕국들이 동지중해와 서아시아에 헬라 문화를 확산했다.","bible":"헬라어 코이네와 신약성경의 언어적 배경.","korea":"고조선·철기 문화"},{"id":21,"year":-250,"region":"인도","title":"마우리아 제국과 아소카","desc":"불교 후원과 광범위한 제국 행정이 전개되었다.","bible":"동서 문명의 종교·제국 운영 방식 비교.","korea":"고조선 후기 관련 문헌과 철기 문화"},{"id":22,"year":-221,"region":"중국","title":"진의 중국 통일","desc":"진시황이 전국시대 국가들을 통일했다.","bible":"헬레니즘 왕국과 동시대 제국 비교.","korea":"고조선과 초기 철기 문화"},{"id":23,"year":-167,"region":"이스라엘","title":"마카베오 항쟁","desc":"셀레우코스 왕조의 정책에 저항하는 유대인 반란.","bible":"다니엘서의 역사적 배경과 제2성전기 연구.","korea":"고조선 후기·초기 철기 문화"},{"id":24,"year":-108,"region":"한국","title":"한사군 설치","desc":"한나라가 위만조선을 멸망시키고 군현을 설치했다.","bible":"로마 공화정 말기와 동아시아 질서 비교.","korea":"고조선 멸망과 한사군"},{"id":25,"year":-63,"region":"로마","title":"로마의 예루살렘 진입","desc":"폼페이우스가 예루살렘에 들어갔다.","bible":"신약시대 로마 지배의 정치적 배경.","korea":"삼한 사회와 초기 국가 형성"},{"id":26,"year":-27,"region":"로마","title":"아우구스투스와 제정 시작","desc":"옥타비아누스가 아우구스투스 칭호를 받았다.","bible":"누가복음 2장의 로마 제국 배경.","korea":"삼한 사회와 초기 삼국"},{"id":27,"year":30,"region":"이스라엘","title":"예수님의 공생애와 십자가","desc":"예수님의 사역과 십자가 사건은 서기 1세기 초에 위치한다.","bible":"복음서; 정확한 십자가 연도에는 견해 차이가 있다.","korea":"고구려·백제·신라 초기와 삼한"},{"id":28,"year":50,"region":"로마","title":"바울의 지중해 선교","desc":"로마 제국의 도로·항구·도시망을 따라 공동체가 확산했다.","bible":"사도행전과 바울서신; 여행 경로 지도 학습.","korea":"삼국 초기의 발전"},{"id":29,"year":70,"region":"로마","title":"예루살렘 성전 파괴","desc":"로마군이 제2성전을 파괴했다.","bible":"복음서의 성전 담론과 유대교·기독교 역사.","korea":"삼국 초기의 발전"},{"id":30,"year":224,"region":"이란","title":"사산 왕조 성립","desc":"파르티아를 대체한 사산 왕조가 등장했다.","bible":"동방 기독교와 페르시아의 종교 환경.","korea":"고구려·백제·신라의 성장"},{"id":31,"year":313,"region":"로마","title":"밀라노 칙령","desc":"콘스탄티누스와 리키니우스가 종교 관용 정책을 발표했다.","bible":"초기 교회와 로마 국가의 관계 변화.","korea":"삼국시대"},{"id":32,"year":372,"region":"한국","title":"고구려 불교 공인","desc":"소수림왕 시대 불교 수용과 교육·율령 정비.","bible":"동서 종교의 제도화 비교.","korea":"고구려 소수림왕"},{"id":33,"year":476,"region":"유럽","title":"서로마 황제 폐위","desc":"서방 제국의 황제권이 종식되었다.","bible":"고대 교회에서 중세 교회로의 변화.","korea":"삼국시대"},{"id":34,"year":570,"region":"아라비아","title":"이슬람 등장 전후의 아라비아","desc":"7세기 초 이슬람이 아라비아에서 확산되기 전후의 배경.","bible":"비잔틴·사산 제국과 동방 기독교의 관계.","korea":"삼국시대"},{"id":35,"year":618,"region":"중국","title":"당 왕조 성립","desc":"동아시아의 국제 질서를 재편한 당 제국.","bible":"실크로드를 통한 종교와 문화 교류.","korea":"고구려·백제·신라"},{"id":36,"year":668,"region":"한국","title":"고구려 멸망","desc":"나당 연합군에 의해 고구려가 멸망했다.","bible":"비잔틴과 이슬람 초기 국가의 동시대 비교.","korea":"통일신라·발해 성립 전후"},{"id":37,"year":750,"region":"이란","title":"아바스 왕조와 바그다드","desc":"이슬람 제국의 중심이 바그다드로 옮겨가며 학술 문화가 성장했다.","bible":"동방 기독교·번역 운동과 지식 교류.","korea":"통일신라·발해"},{"id":38,"year":800,"region":"유럽","title":"카롤루스 대제의 대관","desc":"서유럽의 제국 권위가 재구성되었다.","bible":"중세 서방 교회와 정치 권력.","korea":"통일신라·발해"},{"id":39,"year":918,"region":"한국","title":"고려 건국","desc":"왕건이 고려를 세웠다.","bible":"중세 유럽·이슬람·동아시아 동시대 비교.","korea":"후삼국과 고려 건국"},{"id":40,"year":1054,"region":"유럽","title":"동서 교회 분열","desc":"로마와 콘스탄티노폴리스의 갈등이 심화된 상징적 연도.","bible":"가톨릭·정교회의 역사적 분화.","korea":"고려 시대"},{"id":41,"year":1096,"region":"유럽","title":"제1차 십자군","desc":"서유럽에서 레반트로 군사 원정이 시작되었다.","bible":"중세 신앙·정치·폭력의 관계를 비판적으로 연구.","korea":"고려 시대"},{"id":42,"year":1206,"region":"몽골","title":"몽골 제국의 성립","desc":"칭기즈 칸이 몽골 부족들을 통합했다.","bible":"실크로드와 동서 종교 교류의 재편.","korea":"고려 시대"},{"id":43,"year":1271,"region":"중국","title":"원 왕조 수립","desc":"쿠빌라이가 원이라는 국호를 사용했다.","bible":"몽골 제국의 유라시아 네트워크.","korea":"고려 원 간섭기"},{"id":44,"year":1347,"region":"유럽","title":"흑사병의 확산","desc":"유라시아를 가로지르는 전염병이 유럽에 크게 확산했다.","bible":"중세 종교문화와 사회 변화.","korea":"고려 말"},{"id":45,"year":1392,"region":"한국","title":"조선 건국","desc":"이성계가 조선을 세웠다.","bible":"르네상스 초기 유럽과 동아시아 국가 형성 비교.","korea":"조선 건국"},{"id":46,"year":1453,"region":"유럽","title":"콘스탄티노폴리스 함락","desc":"오스만 제국이 비잔틴 수도를 점령했다.","bible":"동방 기독교·인문주의와 지중해 세계 변화.","korea":"조선 세조 이전 시기"},{"id":47,"year":1492,"region":"아메리카","title":"콜럼버스의 대서양 항해","desc":"유럽과 아메리카의 접촉이 식민주의 확대로 이어졌다.","bible":"세계 선교의 확장과 제국주의를 구분해 연구.","korea":"조선 성종 시대"},{"id":48,"year":1517,"region":"유럽","title":"종교개혁의 전개","desc":"루터의 95개조 논제 발표를 계기로 논쟁이 확산했다.","bible":"성경 번역·교회 개혁·교파 형성.","korea":"조선 중종 시대"},{"id":49,"year":1592,"region":"한국","title":"임진왜란","desc":"일본의 조선 침략으로 동아시아 국제전이 전개되었다.","bible":"근세 유럽의 종교 전쟁과 동시대 비교.","korea":"조선 선조 시대"},{"id":50,"year":1644,"region":"중국","title":"청의 베이징 입성","desc":"청 왕조가 중국 본토 통치를 확대했다.","bible":"근세 유럽 국가와 동아시아 제국 비교.","korea":"조선 인조 시대"},{"id":51,"year":1776,"region":"아메리카","title":"미국 독립 선언","desc":"북미 식민지의 독립 운동이 새로운 국가 형성으로 이어졌다.","bible":"근대 시민사회와 종교 자유의 역사.","korea":"조선 영조 말·정조 즉위년"},{"id":52,"year":1789,"region":"유럽","title":"프랑스 혁명","desc":"구체제와 시민권을 둘러싼 정치적 변동.","bible":"근대 교회와 세속 정치의 관계.","korea":"조선 정조 시대"},{"id":53,"year":1804,"region":"이란","title":"카자르 시대의 이란","desc":"카자르 왕조가 유럽 열강과 외교·군사적 경쟁을 벌였다.","bible":"근대 중동 선교·제국주의의 배경.","korea":"조선 순조 시대"},{"id":54,"year":1868,"region":"일본","title":"메이지 유신","desc":"일본의 국가 제도와 산업 구조가 재편되었다.","bible":"근대 동아시아 기독교 수용의 맥락.","korea":"조선 고종 시대"},{"id":55,"year":1885,"region":"한국","title":"한국 개신교 선교의 전개","desc":"언더우드와 아펜젤러가 조선에 입국했다.","bible":"근대 세계 선교와 한국 교회사.","korea":"조선 고종 시대"},{"id":56,"year":1914,"region":"유럽","title":"제1차 세계대전","desc":"유럽 중심의 전쟁이 세계적 충돌로 확대되었다.","bible":"전쟁·민족주의·20세기 신학.","korea":"일제강점기"},{"id":57,"year":1945,"region":"세계","title":"제2차 세계대전 종전","desc":"전쟁이 끝나고 국제 질서가 재편되었다.","bible":"홀로코스트 이후 신학과 세계 교회.","korea":"광복과 분단"},{"id":58,"year":1979,"region":"이란","title":"이란 혁명","desc":"팔라비 왕조가 무너지고 이슬람 공화국이 수립되었다.","bible":"현대 중동의 종교·정치 구조를 역사적으로 연구.","korea":"대한민국 산업화 시기"},{"id":59,"year":1991,"region":"세계","title":"소련 해체","desc":"냉전 체제가 종식되었다.","bible":"세계 기독교의 지역적 성장과 국제 질서 변화.","korea":"대한민국 민주화 이후"},{"id":60,"year":2000,"region":"세계","title":"디지털 세계화","desc":"인터넷과 디지털 기술이 사회 전반을 바꾸었다.","bible":"디지털 시대의 성경 연구와 세계 교회.","korea":"대한민국 정보화 시대"}],"links":[[0,2,"수메르 도시 전통의 계승"],[1,4,"혼란기 뒤 재통일과 팽창"],[5,6,"궁전 체제의 붕괴"],[5,8,"트로이 전승이 서사시로"],[6,7,"레반트 정치 질서의 재편"],[9,13,"메디아 정복과 제국 성립"],[10,12,"앗수르 이후 바빌론의 패권"],[12,14,"포로기와 페르시아의 정복"],[13,14,"키루스의 확장"],[14,15,"페르시아의 서방 진출"],[11,16,"폴리스 정치의 발전"],[15,16,"승전 뒤 아테네의 전성기"],[16,17,"아테네의 정치 갈등"],[18,19,"동방 원정"],[19,20,"페르시아 붕괴 뒤 헬레니즘"],[20,21,"알렉산드로스 철수 뒤 북인도 통일"],[20,23,"셀레우코스 왕조의 헬레니즘 정책"],[22,24,"진 이후 한나라의 팽창"],[23,25,"하스몬 왕조 내분과 로마 개입"],[25,26,"공화정 말 내전과 제정"],[26,27,"로마 제정 아래의 유대"],[27,28,"초기 교회의 확산"],[25,29,"로마 지배와 유대 반란"],[28,31,"박해를 거쳐 공인으로"],[30,34,"비잔틴·사산 전쟁의 시대"],[34,37,"이슬람 제국의 형성"],[33,38,"서방 제국 권위의 재구성"],[35,36,"나당 연합"],[36,39,"통일신라·발해를 거쳐 후삼국 통합"],[40,41,"비잔틴의 원조 요청"],[42,43,"쿠빌라이의 계승"],[42,44,"몽골이 연결한 유라시아 교역망"],[43,45,"원·명 교체기의 고려 말 변동"],[49,50,"명의 원군 파병과 재정 압박"],[47,51,"식민지에서 독립으로"],[51,52,"혁명 사상의 확산"],[48,55,"개신교 전통의 세계 확산"],[53,58,"근대 이란 왕정의 흐름"],[56,57,"세계대전의 연쇄"],[57,59,"냉전 체제와 그 끝"],[59,60,"탈냉전 세계화"]],"civs":[{"name":"그리스","path":"미케네 → 폴리스 → 마케도니아 → 헬레니즘","story":"미케네 궁전 문화가 쇠퇴한 뒤 아테네·스파르타 같은 폴리스가 성장했어요. 페르시아 전쟁과 펠로폰네소스 전쟁을 거쳐 마케도니아의 필리포스 2세가 그리스를 장악했고, 알렉산드로스는 이집트와 페르시아까지 정복했습니다. 그의 사후에는 프톨레마이오스·셀레우코스·안티고노스 왕조가 경쟁했어요.","sources":"호메로스 서사시, 헤로도토스 『역사』, 투키디데스 『펠로폰네소스 전쟁사』","bible":"코이네 그리스어와 헬레니즘 도시 문화는 신약성경의 중요한 배경입니다.","korea":"한반도 청동기·초기 철기 문화에서 고조선 관련 기록의 시대로 이어집니다.","years":[-1600,-800,-508,-336,-323,-146],"tag":"에게해의 도시국가와 헬레니즘","flow":["미케네 문명","트로이 전쟁 전승","아테네와 스파르타","알렉산드로스","헬레니즘"],"chapters":[{"t":"미케네와 트로이의 기억","p":"기원전 1600~1100년","h":"미케네 궁전 문명은 그리스 본토의 청동기 문화를 대표한다. 선형문자 B는 초기 그리스어를 기록했다. 트로이 유적에는 여러 차례의 파괴층이 있지만, 호메로스의 전쟁 이야기를 그대로 입증하는 것은 아니다.","b":"이스라엘의 사사 시대를 추정하는 연대와 일부 겹칠 수 있지만 직접적인 교류를 단정할 자료는 제한적이다.","k":"한반도에서는 청동기 문화가 지역에 따라 전개되기 시작한 시기로 비교할 수 있다."},{"t":"폴리스와 페르시아 전쟁","p":"기원전 6~5세기","h":"아테네는 민주정의 제도를 발전시켰고 스파르타는 군사 중심의 독특한 체제를 유지했다. 페르시아 전쟁 이후 아테네의 영향력이 커졌으나 펠로폰네소스 전쟁으로 그리스 세계는 심각한 갈등을 겪었다.","b":"유다의 바벨론 포로와 페르시아 시대 이후의 역사와 시간적으로 맞닿는다. 에스라·느헤미야 시대의 제국 배경을 함께 읽어 보자.","k":"한반도는 고조선 및 여러 청동기 문화의 전개 시기와 비교된다."},{"t":"알렉산드로스와 헬레니즘","p":"기원전 336~30년","h":"마케도니아의 알렉산드로스는 페르시아 제국을 무너뜨리고 이집트에서 인도 북서부까지 진군했다. 그가 죽은 뒤 제국은 여러 후계 왕국으로 나뉘었다. 그리스어와 도시 문화는 동지중해와 서아시아 전역에 널리 퍼졌다.","b":"코이네 그리스어의 확산은 훗날 신약성경이 기록된 언어 환경을 이해하는 데 중요하다. 유대인의 헬레니즘 수용과 저항도 함께 살핀다.","k":"한반도에서는 고조선 후기 및 초기 철기 문화의 전개와 시기적으로 비교된다."}],"ri":0},{"name":"이란","path":"엘람 → 메디아 → 아케메네스 → 파르티아 → 사산 → 이슬람 왕조","story":"이란 고원에는 엘람을 비롯한 여러 정치체가 있었고, 기원전 6세기 키루스가 아케메네스 제국을 일으켰습니다. 다리우스 1세는 행정구역과 도로망을 정비했어요. 알렉산드로스의 정복 뒤에는 헬레니즘 왕조, 파르티아, 사산 왕조가 차례로 등장했고 이후 이슬람 시대를 거쳐 사파비·카자르·팔라비 왕조로 이어졌습니다.","sources":"헤로도토스 『역사』, 베히스툰 비문, 페르도시 『샤나메』","bible":"키루스의 바빌론 정복과 유다 포로 귀환은 에스라 1장 및 제2성전기 연구와 연결됩니다.","korea":"아케메네스 시대에는 한반도 청동기·초기 철기 문화가 전개됐고, 사산 시대에는 삼국이 성장했습니다.","years":[-2700,-550,-522,-247,224,651,1501,1925],"tag":"엘람에서 사산 왕조까지","flow":["엘람","메디아","아케메네스","파르티아","사산"],"chapters":[{"t":"키루스와 아케메네스 제국","p":"기원전 6세기","h":"키루스 2세는 메디아와 리디아를 정복하고 기원전 539년 바빌론을 점령했다. 광대한 제국은 여러 지역의 관습과 행정 체계를 활용하며 운영되었다.","b":"에스라 1장의 귀환 조서와 이사야 45장의 키루스 언급을 당시 제국의 정책과 구분해 읽는다.","k":"고조선 및 동아시아 춘추 시대와 같은 시간축에 놓인다."},{"t":"다리우스와 제국의 길","p":"기원전 522~486년","h":"다리우스 1세는 제국 행정과 조세 제도를 정비하고 왕의 길 등 교통망을 활용했다. 페르세폴리스의 궁전 유적은 제국의 다양한 민족과 지역을 시각적으로 보여 준다.","b":"학개·스가랴에 등장하는 다리우스 시대의 성전 재건 배경을 탐구한다.","k":"한반도 청동기 문화와 고조선의 성장 과정에 관한 자료를 비교한다."},{"t":"파르티아와 사산 왕조","p":"기원전 247년~서기 651년","h":"파르티아는 로마와 경쟁하며 이란 고원의 강국으로 성장했다. 사산 왕조는 조로아스터교와 왕권의 관계를 강화했고 비잔티움과 오랜 전쟁을 치렀다. 이후 이슬람 정복으로 정치 질서가 크게 바뀌었다.","b":"사도행전 2장에 등장하는 바대인(파르티아인)을 당시 동방 세계의 관점에서 살펴본다.","k":"한반도는 삼국의 형성과 발전을 거쳐 통일신라 초기로 이어지는 시기다."}],"ri":2},{"name":"중국","path":"하 전승 → 상 → 주 → 진 → 한 → 삼국 → 수·당 → 송·원 → 명·청","story":"상 왕조의 갑골문과 청동 문화, 주 왕조의 봉건적 질서, 춘추전국시대의 사상 경쟁을 거쳐 진시황이 통일했습니다. 한나라 이후 위·촉·오가 경쟁했고, 수·당의 재통일과 국제 교류, 송의 도시경제, 원의 유라시아 네트워크, 명·청의 통치가 이어졌어요. 하 왕조의 실재와 범위는 고고학적으로 논쟁이 있습니다.","sources":"『사기』, 『삼국지』(진수), 『삼국지연의』(나관중), 『논어』, 『서유기』","bible":"진·한의 통일은 헬레니즘·로마의 발전과 동시대이며, 당 시대에는 동방 기독교의 중국 전래 기록이 남습니다.","korea":"한사군·삼국·통일신라·고려·조선의 역사를 각 중국 왕조와 나란히 비교할 수 있습니다.","years":[-1600,-1046,-221,-206,220,618,960,1271,1368,1644],"tag":"왕조의 교체와 동아시아 고전","flow":["상·주","춘추전국","진·한","삼국","수·당","송·원·명·청"],"chapters":[{"t":"춘추전국과 제자백가","p":"기원전 770~221년","h":"주 왕실의 권위가 약해지면서 여러 제후국이 경쟁했다. 공자·묵자·맹자·장자·한비자 등 다양한 사상가가 정치와 인간의 삶을 논했다. 이 시대는 중국 고전 사상의 중요한 토대다.","b":"이스라엘 예언자들의 활동과 일부 시기가 겹치지만 사상적 직접 영향은 별도로 검증해야 한다.","k":"고조선과 한반도의 청동기·초기 철기 문화가 전개되었다."},{"t":"진·한과 실크로드","p":"기원전 221년~서기 220년","h":"진시황은 중국의 여러 나라를 통일하고 문자·도량형 등 제도를 정비했다. 한 왕조는 장기간 존속하며 유교적 정치 질서와 서역 교류를 확대했다. 실크로드는 하나의 길이 아니라 여러 교역망의 총칭이다.","b":"예수님과 초대교회 시대에 중국은 한 왕조의 후기에 해당한다. 직접 연결과 단순한 동시대를 구분하자.","k":"고조선 말기, 부여·고구려 등 여러 나라의 성장과 겹친다."},{"t":"삼국의 실제 역사와 소설","p":"220~280년","h":"후한 말의 혼란 뒤 위·촉·오가 대립했다. 조조와 유비, 손권은 역사적 인물이지만 『삼국지연의』의 많은 장면은 후대에 문학적으로 각색되었다. 진이 280년 오를 멸망시키며 통일했다.","b":"초대교회 이후 로마 제국의 3세기 위기와 동시대 사건으로 비교한다.","k":"고구려·백제·신라가 국가 체제를 발전시키던 시기다."}],"ri":3},{"name":"한국","path":"고조선 → 삼국·가야 → 통일신라·발해 → 고려 → 조선 → 근현대","story":"한반도의 선사 문화와 고조선 관련 기록을 살펴본 뒤, 고구려·백제·신라·가야의 경쟁과 교류를 공부합니다. 이후 통일신라와 발해, 고려의 불교 문화와 대외 관계, 조선의 유교적 통치와 한글 창제, 개항과 근대화, 일제강점기, 해방 이후의 역사를 이어서 탐험해요.","sources":"『삼국사기』, 『삼국유사』, 『난중일기』, 『홍길동전』, 『춘향전』","bible":"삼국 시대는 후기 로마·비잔틴 및 초기 이슬람 세계와 겹치며, 근대 한국 교회는 세계 선교 운동과 연결됩니다.","korea":"이 지역은 한국사 자체가 기준축이며, 다른 지역을 선택하면 같은 시기의 한국사를 함께 볼 수 있습니다.","years":[-2333,-108,372,668,698,918,1392,1443,1592,1910,1945],"tag":"우리 역사를 세계사와 같은 시간축에","flow":["고조선","삼국·가야","남북국","고려","조선","근현대"],"chapters":[{"t":"고조선과 건국 전승","p":"선사 시대~기원전 108년","h":"단군 이야기는 한국 고대 국가의 기원을 설명하는 중요한 전승이다. 고조선의 실제 정치적 발전은 문헌 기록과 고고학 자료를 함께 살펴야 한다. 기원전 108년 한 무제의 침공 이후 한사군이 설치되었다.","b":"고대 근동의 족장·왕국·제국 시대와 연대를 나란히 보되 직접적 연결을 주장하지 않는다.","k":"중국의 전국·진·한과 비교하며 동아시아의 변화를 읽는다."},{"t":"삼국과 가야의 경쟁","p":"기원전 1세기 전후~7세기","h":"고구려·백제·신라와 가야의 여러 정치체는 서로 다른 환경에서 발전했다. 광개토대왕과 장수왕의 고구려, 근초고왕의 백제, 법흥왕과 진흥왕의 신라를 비교하면 국가 운영의 차이가 드러난다.","b":"로마 제국, 초대교회, 비잔티움의 발전과 같은 시간축에 놓고 비교한다.","k":"중국의 한 말기·삼국·남북조·수·당과 교류 및 갈등을 살펴본다."},{"t":"고려에서 조선으로","p":"918~1910년","h":"고려는 후삼국을 통일한 뒤 불교 문화와 대외 교류를 발전시켰다. 조선은 성리학을 통치 이념으로 삼고 제도와 문화를 새롭게 구성했다. 세종의 훈민정음 창제, 임진왜란, 개항과 근대적 변화까지 연속적으로 탐구한다.","b":"유럽의 중세 교회, 종교개혁, 근대 선교 운동과 시간축을 비교한다.","k":"송·원·명·청 및 몽골 제국의 역사와 긴밀하게 연결된다."}],"ri":4},{"name":"이집트","path":"고왕국 → 중왕국 → 신왕국 → 후기 왕조 → 프톨레마이오스 → 로마","story":"나일강 범람을 이용한 농경을 기반으로 왕국이 성장했습니다. 고왕국의 피라미드, 중왕국의 통합, 신왕국의 군사 팽창을 거쳐 후기에는 외세의 지배를 받았습니다. 알렉산드로스 이후 프톨레마이오스 왕조가 들어섰고 클레오파트라 7세 이후 로마의 속주가 되었습니다.","sources":"『사자의 서』, 시누헤 이야기, 로제타석","bible":"창세기의 요셉 이야기와 출애굽 전승의 배경을 연구하되 특정 파라오나 연대를 단정하지 않습니다.","korea":"고왕국은 한반도 신석기 문화, 프톨레마이오스 시대는 고조선 관련 기록과 초기 철기 문화에 해당합니다.","years":[-2686,-2055,-1550,-332,-30],"tag":"나일강과 파라오의 세계","flow":["고왕국","중왕국","신왕국","프톨레마이오스"],"chapters":[{"t":"피라미드와 고왕국","p":"기원전 약 2686~2181년","h":"고왕국의 왕권은 거대한 피라미드 건축과 관료 조직을 통해 드러난다. 기자의 피라미드는 수많은 노동자와 기술자의 조직적 작업으로 건설되었다.","b":"창세기의 초기 연대를 피라미드 연대와 직접 맞추는 데에는 여러 해석이 있으므로 주의한다.","k":"한반도는 신석기 문화가 전개되던 시기와 대체로 겹친다."},{"t":"신왕국과 제국","p":"기원전 약 1550~1070년","h":"신왕국은 투트모세 3세와 람세스 2세 등의 통치 아래 레반트로 영향력을 확대했다. 아마르나 문서는 고대 근동 외교를 보여 주는 귀중한 자료다.","b":"출애굽의 역사적 연대와 파라오의 정체에 관해서는 여러 견해가 있으며 합의가 없다.","k":"한반도에서는 청동기 문화의 초기 전개와 비교할 수 있다."},{"t":"클레오파트라와 로마","p":"기원전 1세기","h":"프톨레마이오스 왕조는 알렉산드로스 사후 이집트를 통치한 그리스계 왕조였다. 클레오파트라 7세는 로마의 권력 투쟁에 깊이 관여했고 기원전 30년 이집트는 로마의 지배를 받게 되었다.","b":"신약 시대 이집트와 알렉산드리아의 유대인 공동체, 그리스어 성경 전승을 함께 살펴본다.","k":"한반도는 고조선 멸망 이후 여러 정치체가 형성되던 시기다."}],"ri":5},{"name":"로마","path":"왕정 전승 → 공화정 → 제정 → 동·서로마 → 비잔틴","story":"전승에 따르면 로마는 기원전 753년에 건국되었습니다. 공화정에서는 원로원·집정관·호민관 제도가 발전했고 지중해 패권을 차지했습니다. 카이사르 내전 뒤 아우구스투스가 제정을 열었으며, 제국은 동서로 나뉘고 동로마 제국은 1453년까지 이어졌습니다.","sources":"베르길리우스 『아이네이스』, 리비우스 『로마사』, 타키투스 『연대기』","bible":"예수님의 탄생·십자가·바울의 선교와 초대교회 박해는 로마 제국의 정치·사회 환경 속에 있습니다.","korea":"로마 제정 초기에는 한반도 삼국의 초기 국가들이 성장했습니다.","years":[-753,-509,-264,-44,-27,313,395,476,1453],"tag":"공화정에서 제국과 교회사로","flow":["로마 건국 전승","공화정","카이사르","아우구스투스","제국과 기독교"],"chapters":[{"t":"로물루스와 공화정","p":"전승상 기원전 753년~기원전 1세기","h":"로물루스와 레무스는 로마의 건국을 설명하는 전승 속 인물이다. 실제 로마는 이탈리아의 여러 공동체가 성장하며 형성되었다. 공화정에서는 원로원과 집정관, 호민관 등의 제도가 권력 갈등 속에서 발전했다.","b":"구약 말기와 신약 사이의 지중해 세계를 이해하기 위한 정치적 배경이다.","k":"고조선 말기부터 여러 초기 국가가 성장하던 시기와 일부 겹친다."},{"t":"카이사르와 아우구스투스","p":"기원전 1세기","h":"내전 속에서 율리우스 카이사르가 권력을 집중시켰고, 그의 사후 옥타비아누스가 아우구스투스라는 칭호를 얻었다. 공화정의 형식은 남았지만 황제 중심의 정치 질서가 시작되었다.","b":"누가복음 2장의 아우구스투스 언급과 예수 탄생 시대의 행정 질서를 살펴본다.","k":"한반도는 고조선 멸망(기원전 108년) 이후 한사군과 여러 정치체가 존재하던 시기다."},{"t":"제국의 도로와 초기 교회","p":"1~4세기","h":"로마의 도로망과 항구, 도시들은 군사와 행정뿐 아니라 사람과 사상의 이동을 도왔다. 제국은 기독교를 때로 탄압했고, 4세기에는 기독교에 대한 제국의 정책이 크게 바뀌었다.","b":"사도행전과 바울 서신의 도시 이름을 지도에 표시하고 이동 경로를 살펴보자.","k":"한반도에서는 고구려·백제·신라·가야가 성장하던 시기다."}],"ri":1},{"name":"이스라엘","path":"족장 전승 → 왕정 → 분열왕국 → 포로기 → 제2성전기 → 로마 시대","story":"성경은 족장과 출애굽, 사사, 사울·다윗·솔로몬의 왕정과 분열왕국을 기록합니다. 북이스라엘은 앗수르에, 유다는 바벨론에 정복되었습니다. 페르시아 시대 귀환과 성전 재건 이후 헬레니즘 왕조·하스몬 왕조·로마 통치를 거쳐 예수님과 초대교회의 시대에 이릅니다. 초기 시대의 연대와 고고학적 해석에는 이견이 있습니다.","sources":"사무엘서·열왕기·역대기·에스라·느헤미야·복음서·요세푸스 『유대 고대사』","bible":"성경의 사건과 외부 사료, 신학적 해석을 구분하며 본문을 역사 속에서 읽습니다.","korea":"왕정 시대에는 한반도 청동기 문화, 제2성전기에는 고조선과 초기 철기 문화가 전개됐습니다.","years":[-1000,-722,-586,-539,-332,-167,-63,30,70],"tag":null,"flow":null,"chapters":[],"ri":-1},{"name":"인도","path":"인더스 문명 → 베다 시대 → 마우리아 → 굽타 → 델리 술탄국 → 무굴","story":"인더스 유역의 도시 문명 이후 베다 전통과 여러 왕국이 성장했습니다. 마우리아의 아소카는 불교를 후원했고, 굽타 시대에는 문학·수학·예술이 발달했습니다. 이후 델리 술탄국과 무굴 제국을 거쳐 영국 식민 통치와 독립으로 이어집니다.","sources":"『마하바라타』, 『라마야나』, 『바가바드 기타』","bible":"인도 종교·철학은 성경과 직접 같은 전통은 아니지만 고대 세계의 종교관을 비교하는 데 도움이 됩니다.","korea":"마우리아 시대에는 한반도 고조선 관련 기록과 철기 문화가 전개됩니다.","years":[-2600,-1500,-322,-268,320,1206,1526,1947],"tag":"고대 도시와 서사시의 세계","flow":["인더스","베다","마우리아","굽타","무굴"],"chapters":[{"t":"인더스 문명과 베다 전통","p":"기원전 약 2600~500년","h":"하라파와 모헨조다로의 도시 유적은 정교한 계획 도시와 교역을 보여 준다. 인더스 문자의 해독은 아직 확정되지 않았다. 이후 베다 전통과 여러 사상 흐름이 발전했다.","b":"고대 이스라엘과 같은 시기 여러 종교 전통이 형성되었지만 직접적 영향은 별도 근거가 필요하다.","k":"한반도의 신석기에서 청동기 문화로의 변화와 비교한다."},{"t":"아소카와 마우리아","p":"기원전 3세기","h":"마우리아 왕조의 아소카는 칙령을 돌기둥과 바위에 새기고 불교를 후원했다. 이 기록은 통치 이념과 윤리적 메시지를 보여 주는 중요한 1차 자료다.","b":"헬레니즘 왕국 및 제2성전기 유대 사회와 동시대에 놓인다.","k":"고조선 후기와 동아시아 전국·진·한 교체기와 비교한다."},{"t":"굽타와 고전 문화","p":"4~6세기","h":"굽타 시대에는 산스크리트 문학과 수학, 미술이 발전했다. 이 시기의 성취를 단일한 황금시대로 단순화하기보다 지역적 다양성과 사회 구조도 함께 살펴야 한다.","b":"후기 로마·초기 비잔티움과 기독교 교리 논쟁의 시대와 비교한다.","k":"한반도는 삼국의 성장과 경쟁이 활발하던 시기다."}],"ri":7},{"name":"메소포타미아","path":"수메르 → 아카드 → 우르 제3왕조 → 고바빌로니아 → 앗수르 → 신바빌로니아","story":"티그리스·유프라테스강 사이에서 도시국가와 쐐기문자가 발전했습니다. 아카드 제국과 우르 제3왕조, 함무라비의 바빌로니아, 신앗수르와 신바빌로니아 제국을 거쳐 페르시아에 편입되었습니다. 여러 시대의 왕조가 서로 다른 영역을 지배했으므로 단일 국가의 연속으로 이해하면 안 됩니다.","sources":"『길가메시 서사시』, 함무라비 법전, 왕실 연대기","bible":"창세기 홍수 전승과 고대 근동의 홍수 서사를 비교하고, 앗수르·바벨론 포로기의 제국 정책을 연구합니다.","korea":"고바빌로니아 시대는 한반도 신석기 후기, 신앗수르 시대는 청동기·초기 철기 문화와 겹칩니다.","years":[-3500,-2334,-2112,-1792,-911,-626,-539],"tag":"수메르에서 바빌론과 앗수르로","flow":["수메르","아카드","바빌론","앗수르","신바빌로니아"],"chapters":[{"t":"수메르와 최초의 도시","p":"기원전 4~3천년기","h":"우루크와 우르 같은 도시는 관개 농업과 행정, 문자의 발달을 보여 준다. 쐐기문자는 처음에는 경제·행정 기록에 쓰였고 이후 문학과 법률에도 활용되었다.","b":"창세기의 도시와 바벨 이야기 등을 읽을 때 고대 근동의 문화적 배경을 제공한다.","k":"한반도에서는 신석기 문화가 전개되던 시기다."},{"t":"앗수르와 이스라엘","p":"기원전 9~7세기","h":"신앗수르 제국은 강력한 군사력과 행정 체계로 서아시아를 지배했다. 기원전 722/721년경 북이스라엘의 수도 사마리아가 함락되었다. 왕의 비문과 부조는 정복자의 관점을 보여 준다.","b":"열왕기하 17장과 앗수르 왕실 기록을 비교하며 사료의 관점 차이를 읽는다.","k":"한반도 청동기 문화와 고조선 관련 전승의 시대와 비교한다."},{"t":"바빌론과 예루살렘","p":"기원전 6세기","h":"신바빌로니아의 느부갓네살 2세는 레반트 지역을 정복했고 기원전 587/586년 예루살렘과 성전이 파괴되었다. 유다인의 포로 경험은 신앙과 정체성에 깊은 영향을 주었다.","b":"열왕기하 24~25장, 예레미야, 에스겔, 다니엘의 역사적 배경을 함께 읽는다.","k":"고조선과 중국 춘추 시대의 동아시아 역사를 병렬로 비교한다."}],"ri":6},{"name":"일본","path":"야요이 → 야마토 → 나라·헤이안 → 가마쿠라·무로마치 → 에도 → 메이지","story":"야요이의 벼농사와 금속기 문화, 야마토 왕권의 성장, 나라·헤이안의 귀족 문화, 무사 정권의 등장, 전국시대의 통일 과정, 에도 막부와 메이지 유신을 거쳐 근대 일본으로 이어집니다.","sources":"『고사기』, 『일본서기』, 『겐지 이야기』, 『헤이케 이야기』","bible":"동아시아에서 불교·유교·기독교가 전래되고 수용된 양상을 비교할 수 있습니다.","korea":"삼국·통일신라·고려·조선과 일본의 각 시대를 교차 비교합니다.","years":[-300,250,710,794,1185,1603,1868],"tag":null,"flow":null,"chapters":[],"ri":-1},{"name":"유럽","path":"중세 왕국 → 르네상스 → 종교개혁 → 계몽주의 → 산업혁명 → 현대","story":"서로마 제국 이후 여러 왕국이 형성되었고 교회·봉건제·도시가 중세 사회를 이루었습니다. 르네상스와 인쇄술, 종교개혁, 과학혁명, 계몽주의, 산업혁명, 두 차례 세계대전과 유럽 통합으로 이어지는 긴 흐름을 공부합니다.","sources":"단테 『신곡』, 셰익스피어 『햄릿』, 세르반테스 『돈키호테』","bible":"중세 교회사, 종교개혁, 성경 번역과 세계 선교의 발전을 살펴봅니다.","korea":"고려·조선·대한제국·현대 한국의 역사를 유럽 변화와 비교합니다.","years":[476,800,1096,1450,1517,1789,1760,1914,1945],"tag":null,"flow":null,"chapters":[],"ri":-1},{"name":"아메리카","path":"올메카 → 마야·아즈텍·잉카 → 식민지 시대 → 독립과 현대","story":"아메리카에는 유럽 도착 이전부터 여러 독자적인 문명이 있었습니다. 마야의 도시와 달력, 아즈텍과 잉카의 정치 체제를 공부하고, 1492년 이후의 정복·전염병·식민지화, 독립 운동과 현대 국가 형성까지 이어서 살펴봅니다.","sources":"『포폴 부』, 마야 문헌, 식민지 시대 연대기","bible":"선교 활동의 역사와 식민지 지배를 동일시하지 않고 원주민의 관점도 함께 검토합니다.","korea":"유럽의 아메리카 진출 초기에는 조선 전기, 미국 독립 시기에는 조선 후기였습니다.","years":[-1200,250,1325,1438,1492,1776,1810],"tag":null,"flow":null,"chapters":[],"ri":-1}],"books":[{"title":"일리아스","region":"그리스","era":"기원전 8세기 무렵 형성","author":"호메로스 전승","story":"트로이 전쟁의 마지막 해, 아킬레우스의 분노에서 시작해 헥토르의 죽음과 장례로 이어집니다. 전쟁 전체나 목마 이야기를 모두 담은 책은 아닙니다.","people":"아킬레우스 · 헥토르 · 프리아모스","themes":"명예와 분노, 전쟁의 비극, 죽음을 앞둔 인간의 선택","bible":"후기 청동기 전승과 서사시의 형성 시기를 구분하고, 사사 시대와의 비교는 동시대성에 한정합니다.","y":-750,"set":[-1250,-1180],"sl":"트로이 전쟁 전승의 배경(후기 청동기)","point":"신화·서사시와 청동기시대 역사적 사실을 구분"},{"title":"오디세이아","region":"그리스","era":"기원전 8세기 무렵 형성","author":"호메로스 전승","story":"트로이 전쟁 이후 오디세우스가 고향 이타케로 돌아가는 긴 여정입니다. 키클롭스와 세이렌, 페넬로페의 기다림이 이야기의 중심을 이룹니다.","people":"오디세우스 · 페넬로페 · 텔레마코스","themes":"귀향, 지혜, 환대, 가족과 정체성","bible":"고대 그리스의 신과 인간의 관계를 성경의 섭리 이해와 비교하되 동일시하지 않습니다.","y":-725,"set":[-1200,-1180],"sl":"트로이 전쟁 이후 귀향 전승","point":"그리스인의 신관과 성경의 신관을 비교"},{"title":"길가메시 서사시","region":"메소포타미아","era":"기원전 2천년기부터 형성","author":"수메르·아카드 전승","story":"우루크의 왕 길가메시가 엔키두와 우정을 나누고 친구의 죽음 뒤 영생을 찾아 떠납니다. 홍수 생존자 우트나피쉬팀의 이야기도 등장합니다.","people":"길가메시 · 엔키두 · 우트나피쉬팀","themes":"죽음, 우정, 인간의 한계, 홍수 전승","bible":"창세기 6~9장과 홍수 전승의 유사점과 차이점을 원문·전승사 관점에서 비교합니다.","y":-1800,"set":[-2700,-2600],"sl":"우루크 왕 길가메시 전승","point":"창세기 홍수 기사와 유사점·차이점 연구"},{"title":"삼국지연의","region":"중국","era":"14세기경 성립","author":"나관중 전승","story":"후한 말 혼란에서 위·촉·오의 대립, 적벽대전과 제갈량의 북벌까지를 극적으로 그립니다. 역사서 『삼국지』를 바탕으로 각색한 소설입니다.","people":"유비 · 조조 · 손권 · 제갈량 · 관우","themes":"충의, 전략, 권력, 영웅 서사의 구성","bible":"실제 삼국시대(3세기)는 로마 제국의 위기 및 한반도 삼국 성장기와 겹칩니다.","y":1370,"set":[184,280],"sl":"황건적의 난부터 진의 통일까지","point":"진수의 『삼국지』와 소설의 차이 확인"},{"title":"사기","region":"중국","era":"기원전 1세기","author":"사마천","story":"황제 전승부터 한 무제 시대까지 본기·표·서·세가·열전으로 역사를 서술합니다. 인물 중심 서술이 후대 역사학에 큰 영향을 주었습니다.","people":"사마천 · 항우 · 유방","themes":"역사 서술, 인물 평가, 사료 비판","bible":"한 제국과 로마 공화정 말기의 동시대 국가 운영을 비교합니다.","y":-91,"set":[-2600,-91],"sl":"황제 전승부터 한 무제 시대까지"},{"title":"샤나메","region":"이란","era":"약 1010년 완성","author":"페르도시","story":"이란의 신화적 왕들에서 역사적 왕조에 이르기까지 왕과 영웅의 이야기를 엮은 방대한 민족 서사시입니다.","people":"로스탐 · 소흐라브 · 자하크","themes":"왕권, 정의, 정체성, 신화와 역사의 경계","bible":"고대 페르시아 왕조에 대한 후대 기억과 성경 시대의 실제 사료를 구분합니다.","y":1010,"set":null,"point":"페르시아 제국의 실제 역사와 민족 서사 구분"},{"title":"아이네이스","region":"로마","era":"기원전 1세기","author":"베르길리우스","story":"트로이에서 탈출한 아이네아스가 이탈리아로 향해 로마의 기원과 연결되는 운명을 수행하는 서사시입니다.","people":"아이네아스 · 디도 · 투르누스","themes":"제국의 정당화, 의무, 운명과 희생","bible":"아우구스투스 시대 로마의 정치적 자기 이해를 읽고 누가복음의 제국 배경을 살펴봅니다.","y":-19,"set":[-1180,-1180],"sl":"트로이 함락 이후의 전승","point":"로마의 제국 이념과 신약의 하나님 나라 비교"},{"title":"마하바라타","region":"인도","era":"수세기에 걸쳐 형성","author":"복합 구전·문헌 전승","story":"판다바와 카우라바 두 가문의 갈등과 대전쟁을 중심으로 의무와 윤리, 우주 질서에 관한 다양한 이야기가 펼쳐집니다.","people":"아르주나 · 크리슈나 · 유디슈티라","themes":"다르마, 가족 갈등, 전쟁의 윤리","bible":"고대 인도 종교사와 성경의 윤리적 담론을 비교하되 각 전통의 차이를 존중합니다.","y":-400,"set":null,"point":"『바가바드 기타』의 위치와 의미 살펴보기"},{"title":"라마야나","region":"인도","era":"기원전 후반~서기 초기 형성","author":"발미키 전승","story":"라마가 유배를 떠나고 시타가 납치되자 동료들과 함께 구출에 나서는 이야기입니다. 지역마다 다양한 판본이 전해집니다.","people":"라마 · 시타 · 하누만 · 라바나","themes":"왕의 의무, 충성, 이상적 통치","bible":"고대 인도의 왕권 이상과 성경 왕정 전승을 비교할 수 있습니다.","y":-300,"set":null,"point":"서사시의 종교적 세계관 이해"},{"title":"논어","region":"중국","era":"전국시대 전후 편집","author":"공자 제자들의 전승","story":"공자와 제자들의 대화와 언행을 통해 인(仁), 예(禮), 배움, 바른 정치의 의미를 전합니다.","people":"공자 · 안회 · 자로","themes":"인, 예, 교육, 공동체 윤리","bible":"성경 지혜문학의 윤리와 비교할 때 문화·시대적 차이를 살펴봅니다.","y":-400,"set":[-551,-479],"sl":"공자의 생애"},{"title":"서유기","region":"중국","era":"16세기 명대","author":"오승은에게 전통적으로 귀속","story":"삼장법사와 손오공 일행이 불경을 구하러 서역으로 떠나는 모험을 그린 장편소설입니다.","people":"손오공 · 저팔계 · 삼장법사","themes":"수행, 변화, 풍자, 종교적 상상력","bible":"당대의 실제 승려 현장 여행과 명대 소설의 창작을 구분합니다.","y":1592,"set":[629,645],"sl":"현장의 서역 여행","point":"불교·도교·민간신앙의 결합 이해"},{"title":"겐지 이야기","region":"일본","era":"11세기 초","author":"무라사키 시키부","story":"헤이안 궁정의 히카루 겐지와 주변 인물들의 관계를 통해 사랑과 권력, 세월의 덧없음을 그립니다.","people":"히카루 겐지 · 무라사키노우에","themes":"궁정 문화, 심리 묘사, 무상감","bible":"고려 전기와 같은 시기의 일본 귀족 문화를 비교합니다.","y":1008,"set":null},{"title":"삼국유사","region":"한국","era":"13세기 후반","author":"일연","story":"고조선 건국 전승과 삼국·통일신라의 불교·설화·향가를 폭넓게 수록합니다.","people":"단군 전승 · 원효 · 여러 설화 인물","themes":"설화와 역사, 종교적 기억, 문화유산","bible":"기록 시기와 기록이 다루는 시대의 차이를 고려해 사료를 읽습니다.","y":1281,"set":[-2333,935],"sl":"단군 전승부터 신라 말까지","point":"기록 시기와 전승 속 사건 시기 구별"},{"title":"삼국사기","region":"한국","era":"1145년 편찬","author":"김부식 등","story":"신라·고구려·백제의 왕대별 역사와 인물 전기를 정리한 관찬 역사서입니다.","people":"김부식 · 삼국 왕과 인물","themes":"정사 편찬, 왕조사, 사료 선택","bible":"중국 정사와 비교하며 삼국 시대를 복원하는 핵심 사료입니다.","y":1145,"set":[-57,935],"sl":"신라 건국 전승부터 신라 멸망까지","point":"『삼국유사』와 서술 목적 비교"},{"title":"난중일기","region":"한국","era":"1592~1598년 기록","author":"이순신","story":"임진왜란 중 이순신이 남긴 일기로 군사 지휘와 전쟁의 고통, 일상의 기록이 함께 나타납니다.","people":"이순신","themes":"전쟁 기록, 리더십, 일상 사료","bible":"유럽의 종교 전쟁·근세 국가 형성과 동시대 비교합니다.","y":1592,"set":[1592,1598],"sl":"임진왜란 7년"},{"title":"신곡","region":"유럽","era":"14세기 초","author":"단테 알리기에리","story":"화자가 지옥·연옥·천국을 여행하는 시적 이야기로 중세 기독교 세계관과 정치·철학을 담았습니다.","people":"단테 · 베르길리우스 · 베아트리체","themes":"중세 신학, 상징, 구원에 대한 문학적 상상","bible":"문학의 사후세계 묘사를 성경의 직접적인 진술과 구분해야 합니다.","y":1320,"set":[1300,1300],"sl":"1300년 부활절 주간이라는 설정"},{"title":"돈키호테","region":"유럽","era":"1605·1615년","author":"미겔 데 세르반테스","story":"기사도 소설에 몰입한 돈키호테가 산초 판사와 여행하며 현실과 환상의 충돌을 보여 줍니다.","people":"돈키호테 · 산초 판사","themes":"이상과 현실, 독서 문화, 근대 소설","bible":"인쇄 문화와 종교개혁 이후 유럽의 지적 환경을 함께 살펴봅니다.","y":1605,"set":null},{"title":"홍길동전","region":"한국","era":"조선 후기 전승","author":"허균 저작설, 성립 논쟁","story":"서얼 차별과 부조리를 배경으로 홍길동이 활빈당을 이끌고 이상 사회를 꿈꾸는 이야기입니다. 판본과 저자 문제에는 연구상 논쟁이 있습니다.","people":"홍길동","themes":"신분제, 정의, 이상 사회","bible":"조선 사회의 구조와 동시대 유럽의 신분·사회 변화를 비교합니다.","y":1650,"set":null,"point":"조선 사회의 신분 제도 이해"},{"title":"포폴 부","region":"아메리카","era":"식민지 시대 문자 기록","author":"키체 마야 전승","story":"마야 키체 공동체의 창조 이야기와 영웅 쌍둥이, 계보와 공동체 기억을 전하는 문헌입니다.","people":"영웅 쌍둥이","themes":"창조 전승, 공동체 기억, 신화와 역사","bible":"창세기와 비교할 때 전승의 맥락과 식민지 시대 기록 과정을 함께 봅니다.","y":1555,"set":null},{"title":"신통기","region":"그리스","era":"기원전 700년 무렵","author":"헤시오도스","story":"신들의 계보와 제우스의 권력 질서를 이야기한다. 그리스 신화가 하나의 통일된 교리가 아니었음을 기억하자.","people":"가이아·크로노스·제우스","themes":"우주 질서와 권력","bible":"","point":"창세기 창조 기사와 장르·세계관 비교","y":-700,"set":null,"sl":null},{"title":"변신 이야기","region":"로마","era":"서기 8년 무렵 완성","author":"오비디우스","story":"신과 인간의 변신 이야기를 엮은 라틴어 시집으로 후대 서양 미술과 문학에 큰 영향을 주었다.","people":"다프네·나르키소스·피그말리온","themes":"욕망과 변화","bible":"","point":"신화적 변신과 성경적 변화의 개념 구별","y":8,"set":null,"sl":null},{"title":"춘향전","region":"한국","era":"18세기 판소리로 성행","author":"작자 미상","story":"춘향과 이몽룡의 사랑을 통해 신분·권력·절개의 문제를 다루는 판소리계 소설이다.","people":"성춘향·이몽룡·변학도","themes":"사랑과 사회 비판","bible":"","point":"조선 후기의 사회 문화와 연결","y":1754,"set":[1674,1720],"sl":"숙종 대라는 설정(이본마다 다름)"}],"map":{"land":"M374,455L374,456L374,456L370,456L367,456L365,456L365,456L364,455L367,455L371,455L371,455L372,455ZM786,455L784,455L783,454L783,454L783,454L783,454L784,453L787,453L788,454L788,454L786,455ZM212,454L213,454L215,455L215,455L214,455L212,454ZM395,453L397,453L399,454L399,455L400,455L397,455L395,456L392,456L389,456L385,456L383,456L383,455L386,455L387,455L388,454L388,454L389,453L389,453L390,453L392,453ZM263,447L265,447L267,447L267,447L266,448L263,448L261,447L260,447ZM255,447L259,447L258,447L255,447L252,447L253,447ZM297,444L299,445L301,445L303,445L301,445L299,445L297,445L295,445L293,445L291,444L292,444L294,444ZM347,443L348,444L349,444L349,445L347,445L345,445L343,445L343,445L342,445L340,445L338,445L337,444L338,443L339,443L342,443L341,442L341,442L339,440L339,440L341,439L342,440L343,441L345,441L346,442ZM223,459L227,459L231,459L237,459L241,459L245,459L249,459L249,459L243,458L238,458L236,458L231,458L231,458L231,457L231,457L230,457L227,457L225,456L222,456L226,456L229,456L232,456L234,456L236,456L237,455L236,455L233,455L230,454L227,454L223,454L220,454L218,454L215,453L213,453L210,452L211,452L213,452L216,452L218,452L220,452L223,452L224,452L226,452L227,451L229,451L228,451L226,450L226,450L227,449L229,450L231,450L233,449L235,449L237,449L239,449L240,448L241,448L243,448L244,448L246,448L249,448L251,448L253,448L255,448L258,448L260,448L263,448L265,448L267,448L269,448L270,448L273,448L274,448L275,447L277,448L279,448L280,449L281,448L284,449L287,449L289,449L291,449L293,449L296,449L298,449L301,450L301,449L299,448L298,448L295,448L294,447L292,447L290,446L292,446L294,446L296,446L299,446L301,446L302,447L305,447L307,447L309,447L310,446L313,447L315,447L315,445L317,446L319,446L321,446L323,447L325,447L328,447L330,447L331,447L331,446L333,447L335,447L337,447L339,448L341,447L343,447L344,447L346,447L348,446L350,446L351,446L352,445L351,445L351,444L349,443L348,443L347,442L346,441L345,441L345,440L345,439L345,439L345,438L344,437L343,436L343,435L343,435L344,434L345,434L346,433L346,432L346,432L347,431L349,431L349,430L350,430L352,430L353,429L353,428L354,428L356,429L356,429L354,430L354,430L352,430L351,430L350,431L349,431L348,432L349,433L350,433L351,434L350,435L349,435L348,435L348,436L347,437L347,438L349,438L350,439L352,439L354,440L355,441L356,441L357,442L358,442L360,443L361,445L362,445L363,446L364,446L364,447L364,448L364,448L362,448L361,449L361,449L359,450L357,450L355,450L353,451L352,451L350,451L347,451L344,451L342,451L343,452L345,452L348,452L349,453L348,453L345,453L343,453L343,454L344,454L346,455L347,455L349,455L353,455L356,456L358,456L362,456L366,456L370,457L373,457L376,457L378,457L379,458L380,457L383,457L385,457L388,457L391,457L395,457L399,457L402,457L403,457L405,456L409,456L412,456L414,456L418,456L421,456L423,455L422,455L421,455L421,454L418,454L415,454L411,454L411,454L410,453L411,453L413,453L416,452L417,452L419,452L420,451L422,451L425,451L426,451L428,451L430,451L432,450L434,450L436,450L438,449L439,449L441,448L441,448L439,447L439,447L440,446L442,446L444,446L445,445L446,445L447,444L448,443L450,443L451,444L453,444L453,443L454,443L456,443L456,444L458,444L460,443L462,443L464,443L465,444L467,443L469,443L471,443L473,443L474,442L476,442L478,442L479,441L480,441L482,441L483,442L484,443L486,442L487,442L489,441L491,441L492,442L493,441L495,441L497,441L499,441L501,441L503,441L503,442L504,442L506,442L508,442L510,442L512,442L514,442L516,442L517,441L519,441L521,441L522,440L523,439L525,439L526,439L527,439L528,440L530,440L531,440L533,441L534,440L535,440L537,439L539,439L541,438L543,438L544,438L546,437L547,437L549,437L551,436L552,436L554,436L555,435L556,435L558,434L559,434L561,434L563,433L564,434L566,434L567,434L567,435L569,436L570,436L572,436L573,437L574,438L575,438L577,437L579,436L580,437L582,437L584,437L585,437L587,437L588,439L587,440L587,441L585,441L583,442L583,442L585,442L584,443L583,444L582,444L583,445L585,445L587,445L588,444L589,443L590,443L592,442L593,442L594,441L595,441L597,441L599,441L601,440L602,440L603,439L605,438L607,438L609,437L610,437L611,436L613,436L614,436L616,436L618,436L620,436L622,435L623,434L624,435L624,436L625,436L627,436L629,436L630,436L632,436L633,436L635,436L636,436L638,436L640,436L641,436L643,436L645,436L646,435L648,434L651,433L652,433L653,434L654,434L655,436L657,436L659,436L661,435L663,435L665,435L667,434L669,434L670,434L672,434L672,435L673,435L675,435L675,436L677,436L679,436L681,436L683,435L685,435L687,435L688,435L690,435L692,435L693,435L695,435L696,435L698,435L701,435L702,435L705,435L706,434L708,434L710,433L711,432L711,433L711,434L710,435L710,435L711,436L714,436L716,435L718,435L720,435L722,435L724,435L726,436L727,436L725,437L726,437L727,438L728,438L730,439L732,439L734,439L736,439L738,439L739,439L739,440L740,440L742,440L744,441L743,441L745,442L745,442L747,442L749,442L751,443L753,443L754,443L756,443L757,443L758,444L759,444L758,445L756,445L754,446L752,447L751,447L748,447L746,448L743,448L742,449L740,449L738,450L736,450L735,451L734,451L733,452L733,452L733,453L733,453L736,453L735,454L732,454L729,454L726,454L724,455L723,455L721,456L720,456L722,456L722,457L723,457L724,457L726,457L728,458L731,458L731,458L735,458L735,458L736,458L741,458L744,458L746,459L746,459L746,459L748,458L751,458L751,458L752,458L752,458L753,458L753,458L753,458L754,458L755,458L758,458L758,458L763,458L764,458L765,458L767,459L771,459L774,459L777,459L774,460L500,460L226,460ZM320,406L324,407L327,408L327,409L325,409L323,409L323,410L322,410L320,410L318,409L315,409L312,408L309,406L304,403L306,404L310,406L314,407L314,405L313,404L315,402L316,403L318,404ZM335,399L337,400L337,401L335,402L333,401L332,402L331,401L332,399L334,400ZM607,395L603,395L604,394L604,393L605,392L606,393L608,393L608,394ZM784,370L786,371L787,370L789,370L790,370L788,373L787,374L785,377L785,376L782,378L782,378L780,378L781,375L781,373L782,371L783,369ZM846,370L846,371L848,370L848,371L847,373L845,374L842,376L840,377L840,379L838,379L835,380L833,382L829,385L827,386L825,387L823,387L822,386L820,385L820,384L823,382L828,379L830,379L833,378L836,376L838,375L841,373L843,372L844,370L847,369ZM860,356L860,359L861,357L862,358L860,360L861,361L863,361L865,360L866,360L863,363L861,365L860,365L858,366L858,367L857,367L855,369L852,371L850,372L850,372L849,371L852,369L853,367L851,366L852,365L854,364L856,361L858,359L858,357L859,357L858,356L858,353L859,351L860,350L860,352L861,353ZM864,311L863,311L862,311L861,309L860,307L859,305L859,304L860,304L861,305L862,306L862,307L864,309ZM898,295L898,295L897,297L896,298L895,297L895,296L896,295L897,295ZM903,292L901,293L899,293L899,292L901,291L901,291L903,290L904,290L903,292ZM872,292L871,292L871,291L871,290ZM872,286L871,289L871,289L870,289L870,288L871,285ZM576,282L576,286L577,287L577,289L576,290L575,288L575,289L575,292L575,293L574,294L574,297L573,301L571,305L569,311L568,316L566,320L564,321L562,322L561,321L559,320L558,318L558,315L558,313L558,310L558,308L559,307L559,306L561,304L561,302L561,300L560,298L560,295L561,293L562,291L563,291L564,290L565,289L566,289L568,287L570,285L571,283L571,282L572,282L573,280L573,278L574,276L575,278L576,279ZM813,282L813,285L815,284L816,285L817,287L816,288L816,291L816,293L817,293L817,296L816,298L816,300L818,302L820,303L821,305L820,306L821,308L821,311L822,311L823,312L824,311L823,315L824,317L825,318L825,321L825,324L825,325L824,327L824,330L822,333L821,335L819,337L818,339L817,342L814,344L812,346L810,348L808,350L806,353L804,354L802,356L801,359L801,360L799,361L796,361L793,362L791,363L789,364L788,363L787,363L788,361L787,362L783,364L782,363L781,362L780,362L778,361L777,359L778,357L778,356L778,354L776,354L777,352L778,350L776,352L773,353L775,351L777,349L778,348L779,345L776,348L774,349L772,352L771,350L772,349L771,346L770,345L771,345L769,343L767,343L766,341L761,341L758,342L755,344L752,343L749,345L747,346L746,347L744,349L742,349L741,349L739,348L737,349L735,349L733,351L733,350L731,351L730,352L728,352L726,352L725,350L724,350L724,348L726,347L726,347L727,345L728,343L728,341L728,338L728,336L729,335L729,332L729,331L728,330L729,328L728,325L728,324L729,325L729,322L730,323L730,324L730,323L730,320L730,319L730,318L730,316L731,315L732,314L732,312L734,309L733,312L735,310L737,308L739,307L741,306L742,306L742,306L745,305L746,304L747,304L748,303L749,303L752,302L753,301L754,299L756,297L757,296L757,294L759,291L760,294L761,294L761,292L762,290L763,291L763,289L765,287L766,286L767,285L767,284L768,284L769,284L770,283L771,283L773,284L774,286L775,286L777,286L777,285L778,282L780,281L779,280L781,278L783,277L784,277L786,277L786,275L785,274L786,273L788,274L789,276L791,277L791,276L793,277L795,276L795,277L796,276L797,278L796,279L795,281L794,281L794,282L793,284L792,286L792,287L793,288L795,290L796,291L798,293L798,293L799,294L800,295L802,296L804,295L805,293L805,291L806,289L807,287L807,285L808,284L808,282L809,280L809,279L809,278L810,276L811,274L811,273L812,272L813,273L812,276L813,276L813,277L813,279L813,281ZM862,271L863,272L861,272L860,270L862,271ZM757,270L756,270L752,268L755,267L756,268L757,269ZM859,269L858,269L857,269L856,268L857,267L858,267L859,268ZM861,268L861,269L859,266L859,264L860,264L861,266ZM766,270L764,271L764,270L764,269L765,267L768,266L768,265L771,264L772,264L773,264L774,264L773,265L770,266L768,267ZM750,263L751,264L753,264L753,265L750,266L748,266L747,266L748,264L749,264ZM763,263L762,265L759,266L755,265L755,264L757,263L759,264L761,264ZM857,264L857,264L856,263L854,262L854,261L854,260L855,261L857,263ZM852,260L851,261L850,260L849,258L850,258L851,259ZM727,258L732,259L732,257L737,259L738,261L742,262L745,264L742,265L739,264L737,264L734,264L732,263L729,262L727,261L726,262L721,260L721,259L718,259L720,255L724,256L726,257L727,257ZM794,256L792,259L792,256L793,255L793,254L794,255ZM848,259L847,259L846,258L845,255L845,253L845,252L845,253L846,254L847,256L848,258ZM838,254L837,254L836,255L835,256L834,257L832,257L830,256L829,255L829,254L831,254L833,254L833,252L834,252L834,254L835,254L836,253L838,251L837,249L839,249L839,250L839,252ZM775,247L774,248L772,247L772,246L775,246ZM784,246L784,248L782,247L780,247L779,247L777,247L778,245L781,245ZM841,251L841,251L840,249L840,248L839,247L837,246L835,244L836,244L837,245L838,245L839,246L840,248L841,249ZM793,239L794,245L796,247L799,243L802,241L804,241L806,242L808,243L811,244L815,246L820,248L821,250L823,252L823,254L827,256L827,258L825,258L825,261L827,263L829,266L830,266L830,268L832,268L831,269L833,271L833,272L831,272L831,271L829,270L826,270L824,268L823,266L822,263L819,261L817,262L815,263L815,266L813,267L812,267L809,266L807,264L804,263L804,264L801,264L802,261L804,260L803,257L802,254L797,251L795,250L792,247L791,249L790,249L789,248L789,246L787,245L790,244L792,244L792,243L788,243L787,241L785,240L784,238L787,237L789,236L793,238ZM770,230L768,234L766,234L764,234L760,234L757,234L757,237L759,240L761,238L765,237L765,239L764,238L763,240L761,242L763,246L762,247L765,251L764,253L763,254L762,253L763,250L761,252L760,251L761,249L759,247L759,244L757,245L758,249L757,254L756,255L755,254L756,250L755,247L754,247L754,245L755,242L755,240L756,234L757,233L759,230L761,231L764,232L767,232L770,229ZM779,231L779,234L778,234L777,236L778,238L778,238L777,236L776,232L776,229L777,227L777,229L779,230ZM720,255L717,255L715,252L712,250L711,248L709,245L708,242L706,237L704,234L703,231L702,229L699,227L698,224L696,222L693,218L693,216L695,216L699,217L701,220L703,223L705,224L707,228L710,228L712,230L713,233L715,235L714,237L716,239L717,239L717,241L718,243L720,243L721,246L720,250ZM751,229L754,232L751,232L750,235L750,238L748,240L748,244L747,249L746,248L743,249L742,247L741,247L739,246L736,247L735,245L734,246L732,245L731,241L730,240L729,237L728,234L729,230L730,228L732,229L734,229L735,226L736,225L739,224L740,222L742,219L743,218L745,216L746,214L748,211L749,211L750,213L750,214L752,215L754,216L754,218L752,218L753,220L751,221L750,224L752,227ZM772,206L772,208L773,210L772,213L771,210L770,212L771,214L770,216L767,214L766,211L767,210L765,208L764,209L763,209L761,211L761,210L762,207L763,206L764,205L765,207L767,206L767,204L769,204L769,201L771,203L771,205ZM657,214L655,214L653,212L653,207L653,201L655,203L657,205L658,209L658,213ZM294,200L292,200L291,200L292,199L292,198L293,197L294,198ZM765,200L764,201L764,203L763,204L761,201L762,201L762,200L762,197L763,197L763,200L765,196ZM751,203L748,206L749,204L751,202L752,199L753,196L754,199L752,200ZM759,194L761,195L762,195L762,196L761,198L760,199L760,197L760,196ZM768,193L769,197L767,196L767,197L768,199L767,200L767,198L766,197L765,195L767,196L767,194L765,192L767,192ZM758,190L757,193L756,191L754,189L756,189ZM754,172L756,173L756,172L757,173L756,174L758,176L758,179L756,180L756,183L757,186L759,186L760,186L763,188L763,189L764,190L764,192L762,190L761,188L760,190L758,188L756,188L755,187L755,186L755,185L755,184L754,185L753,184L752,182L752,179L753,180L752,175L752,172ZM285,172L285,173L283,173L281,173L281,172L282,172L284,172L285,172ZM257,174L256,174L255,174L254,172L254,172L255,171L256,172L257,172L258,173L259,174ZM269,167L271,167L272,167L273,167L275,168L275,168L276,169L277,169L277,170L278,170L279,171L278,173L277,172L275,172L275,172L274,172L273,173L273,172L272,172L271,175L270,174L270,173L268,173L267,173L266,173L264,173L263,172L264,171L266,171L268,172L269,171L268,170L268,168L267,168L268,167ZM726,171L724,173L722,172L721,169L722,167L725,166L726,166L727,168L726,169ZM61,170L60,170L60,170L60,169L61,168L61,167L61,167L62,166L62,166L62,166L63,166L63,167L63,167L63,168L63,168L62,169ZM62,164L61,165L61,164L60,164L61,163L61,163L62,163L62,164ZM61,163L61,163L59,163L60,162ZM59,162L59,162L58,162L58,162L58,161L58,161L58,161L58,161ZM55,160L55,160L54,160L55,159L55,159L56,159ZM254,157L254,159L257,158L257,159L259,161L260,163L261,162L262,163L262,164L264,164L265,166L265,166L263,167L261,167L260,167L256,167L258,165L257,164L256,164L255,163L255,161L254,161L251,160L251,160L248,159L247,159L248,158L246,158L244,159L243,159L242,160L241,161L240,160L241,159L242,158L243,157L245,157L247,156L248,156L250,156L252,156ZM260,154L259,154L259,152L258,151L259,149L260,149L260,152ZM750,157L750,160L748,157L747,155L747,151L749,149L750,150L750,152ZM262,145L259,145L259,144L260,144L262,144ZM264,145L262,147L262,147L263,145L262,144L262,143ZM770,121L771,122L770,124L769,123L768,123L768,125L766,124L765,123L766,121L767,121L768,120ZM534,116L533,117L533,118L533,118L530,119L529,119L529,118L530,118L530,117L530,117L532,117ZM509,116L510,117L512,117L513,117L513,117L515,117L514,118L511,118L511,118L508,117ZM490,108L489,110L489,111L489,113L487,112L486,111L483,110L483,108L486,109L488,108ZM476,99L477,101L476,105L475,105L474,106L474,105L474,102L473,100L474,100ZM780,111L781,114L782,115L782,118L779,119L775,119L774,123L771,122L770,119L766,120L764,121L762,121L765,124L766,129L765,130L763,129L762,126L761,125L759,123L761,122L761,120L763,119L763,117L768,116L770,116L770,111L772,112L774,109L775,108L774,104L772,101L772,99L774,99L778,103L779,105L778,108ZM477,96L476,99L475,98L474,96L475,95L476,94ZM774,90L776,91L777,90L780,93L777,94L777,97L772,95L773,98L770,98L768,95L768,93L770,93L768,89L767,87L772,89ZM318,84L319,84L321,84L320,85L319,85L317,84L317,83L318,82ZM325,77L324,77L322,76L321,75L322,74L324,75L326,76ZM192,78L191,79L189,77L189,76L188,75L188,75L186,74L187,73L188,72L189,73L190,73L192,73L192,74L192,76L193,77ZM340,72L337,75L339,74L340,74L339,75L340,76L342,75L343,76L342,78L344,78L343,79L343,81L341,83L340,83L339,83L340,81L340,80L336,83L335,83L337,81L335,81L333,81L329,81L329,80L331,79L330,78L333,77L337,72L339,71L341,70L342,70L342,71ZM187,64L190,63L186,66L186,68L185,68L185,67L185,66L185,65L186,64L187,63ZM760,72L766,77L762,76L764,80L768,83L770,85L767,83L767,85L765,83L763,80L761,77L760,75L757,72L753,69L751,65L752,64L750,63L750,63L752,64L755,67L757,70ZM444,68L440,70L437,69L440,67L439,64L442,62L444,61L446,61L448,62L446,64L446,66ZM485,60L484,62L482,60L482,59L485,58ZM156,56L153,57L152,56L154,55L157,54L158,54L159,54L159,55ZM455,52L452,55L454,55L457,55L456,57L454,59L456,59L457,62L458,63L459,65L460,66L462,67L462,69L460,69L461,71L459,72L456,72L453,73L452,72L450,74L448,73L447,74L445,74L449,71L451,70L448,70L447,69L450,68L449,67L449,65L452,65L453,64L452,62L449,62L449,61L450,60L450,59L448,60L449,58L448,57L449,54L451,52L452,52ZM838,49L837,50L835,49L833,49L834,48L836,48ZM312,44L310,45L310,45L310,45L310,44L311,44L312,44ZM308,43L305,44L304,44L304,44L306,43L309,43ZM813,41L815,41L816,41L818,42L821,42L821,42L820,42L818,42L817,42L815,42L814,42ZM308,37L308,38L309,37L309,38L311,39L312,39L311,40L313,40L314,41L311,42L309,41L309,40L306,41L302,42L303,41L300,41L303,40L304,39L307,37ZM438,35L437,37L438,38L435,40L430,41L428,41L425,41L421,40L423,39L419,38L423,38L423,37L419,37L421,36L424,35L426,37L429,36L431,36L435,35ZM328,34L326,34L326,33L328,32L330,32L331,32L330,33L329,33ZM782,31L789,32L796,34L798,35L800,36L797,34L803,34L809,36L809,37L806,37L810,39L809,40L808,40L805,39L802,38L800,38L798,37L796,37L794,37L793,36L792,36L794,37L794,38L794,38L793,39L791,39L794,40L797,42L799,42L801,43L801,44L797,43L794,45L792,45L792,47L791,48L791,49L786,48L784,50L782,49L781,50L778,49L779,51L780,53L781,54L784,55L787,58L785,58L787,60L789,62L787,63L789,66L786,66L788,69L787,71L785,70L781,66L774,60L771,57L771,55L770,54L773,54L773,51L774,48L775,47L772,43L770,44L771,45L770,48L765,45L761,46L760,50L763,51L760,52L757,52L755,50L752,50L751,51L744,51L739,51L737,56L734,62L738,62L740,64L742,64L743,63L745,63L750,66L752,68L753,71L755,74L758,78L757,82L758,84L757,88L756,91L756,93L754,94L752,94L750,93L748,95L749,96L748,96L747,97L747,98L748,100L748,101L747,101L747,102L746,103L745,103L746,105L746,105L747,106L749,107L752,110L754,112L756,116L756,118L754,118L752,120L750,120L749,118L749,116L746,113L748,112L745,109L744,109L744,109L743,110L743,109L742,109L741,108L741,107L741,107L741,106L741,105L740,104L739,104L737,103L735,104L734,105L732,106L732,105L731,103L732,101L730,100L729,101L727,103L726,105L724,105L724,106L726,109L728,109L729,110L731,111L732,109L735,110L737,110L738,112L735,113L734,115L733,116L732,118L736,120L738,123L740,126L743,128L744,131L743,132L744,133L745,134L746,137L746,139L745,140L744,143L744,148L742,151L740,154L737,157L734,158L733,159L732,158L731,160L728,161L725,162L725,165L724,166L723,163L723,162L720,161L719,161L716,164L714,167L714,170L717,173L720,178L722,180L724,182L726,189L727,195L725,197L722,199L720,202L718,205L716,203L717,201L715,199L713,198L711,197L710,193L707,191L705,191L705,189L703,189L703,193L702,198L702,201L702,203L704,203L705,206L706,209L707,211L709,212L710,213L711,214L713,216L714,218L714,221L714,222L714,223L714,225L715,226L716,229L716,231L714,231L712,228L709,225L709,224L707,221L707,219L706,217L706,214L705,213L704,211L703,210L702,208L701,206L700,208L700,206L700,204L700,201L700,198L700,196L699,194L699,190L698,188L697,184L696,180L694,177L693,179L690,181L689,181L687,180L687,176L686,173L684,169L684,167L682,167L680,164L679,163L679,161L678,159L677,157L674,157L675,159L674,160L673,160L673,160L672,160L671,160L671,161L669,161L666,162L667,164L666,166L663,168L660,172L659,174L656,177L657,178L655,179L653,180L652,180L652,183L653,187L653,190L652,193L653,199L651,199L650,202L651,203L649,204L648,206L647,207L645,204L643,199L642,196L641,194L639,191L638,187L638,185L635,180L633,174L632,169L632,165L631,162L627,164L626,164L622,160L623,158L622,157L619,154L617,153L616,151L614,149L609,149L605,149L602,150L597,149L594,148L591,148L590,144L589,143L587,144L585,145L582,144L579,142L576,141L575,138L572,133L571,134L569,133L569,134L567,134L568,135L568,136L569,138L570,141L571,142L572,143L573,144L574,146L574,147L574,148L575,149L575,150L576,151L575,148L576,147L576,146L577,147L577,149L577,151L578,152L578,152L578,153L580,153L582,153L584,153L585,151L587,149L588,146L589,145L589,146L589,147L589,148L589,150L591,152L592,154L594,154L595,155L597,157L598,158L598,158L599,159L598,161L598,162L597,163L596,165L595,165L594,166L594,167L594,170L594,170L593,170L592,171L592,173L591,174L589,174L589,174L589,176L587,177L586,176L584,178L583,178L582,179L581,180L581,181L579,183L575,184L573,187L571,187L571,187L569,188L568,189L566,189L565,189L564,190L564,190L563,191L562,191L561,192L560,191L559,189L559,188L558,187L558,184L557,183L558,183L557,181L558,180L557,179L557,177L556,176L556,175L555,174L553,171L552,168L550,166L549,165L548,162L547,160L547,158L546,154L544,153L543,152L542,150L542,150L541,148L541,147L540,145L538,142L537,140L535,140L536,138L536,137L536,136L536,135L535,137L535,139L534,141L534,141L533,140L532,139L530,134L530,134L531,138L532,141L534,146L535,148L536,150L539,153L538,154L538,156L541,159L542,160L543,163L542,164L543,167L544,171L545,172L546,173L548,177L549,180L550,182L554,185L555,187L556,189L557,190L559,191L559,192L559,194L558,195L559,195L560,196L560,198L561,199L563,199L565,198L568,198L570,197L571,196L572,196L574,196L574,196L576,195L577,195L578,194L579,194L579,194L579,196L579,198L579,200L578,203L577,207L575,211L573,217L571,220L568,225L566,228L562,231L559,234L557,238L556,240L555,241L554,242L553,244L552,244L552,246L551,248L550,250L549,251L548,255L548,257L550,259L550,260L549,262L549,263L549,264L550,266L551,270L552,271L552,272L552,276L552,279L552,284L553,286L552,288L551,290L549,292L547,294L544,295L541,299L540,300L538,302L537,303L537,305L538,308L538,310L538,311L539,310L538,314L538,315L538,316L538,317L537,318L535,319L532,321L531,322L531,324L532,324L531,326L531,328L530,331L529,332L528,334L527,334L526,336L525,338L524,340L521,343L519,345L518,347L515,348L514,348L514,349L512,348L511,349L508,348L507,349L506,349L504,350L502,350L500,351L499,351L498,350L497,350L496,349L496,349L496,349L496,347L495,345L496,344L496,342L494,339L493,336L493,336L491,332L489,329L488,327L488,324L487,321L486,316L486,312L486,311L485,309L483,306L482,302L482,300L479,297L479,294L479,292L479,289L480,286L480,285L481,282L482,280L483,278L484,276L484,274L484,272L483,271L482,269L482,267L482,266L483,265L482,261L481,259L480,257L480,256L480,255L479,252L477,249L475,245L473,242L471,239L471,238L472,237L472,234L473,232L473,231L473,227L474,224L473,222L472,221L471,220L470,219L471,218L468,220L467,220L466,220L464,220L462,218L462,216L460,213L458,213L456,213L454,214L451,215L447,217L446,218L444,219L441,218L440,218L438,217L437,217L434,218L432,219L429,220L429,220L428,220L426,218L423,216L421,214L420,212L419,211L417,210L416,208L415,207L415,204L414,202L413,201L412,200L412,200L412,198L411,197L411,197L409,195L408,195L408,194L408,194L407,193L407,192L407,190L407,188L406,186L405,184L406,184L407,181L408,180L408,178L409,176L409,173L409,170L409,168L410,166L409,165L408,163L408,162L408,160L409,159L410,158L410,156L411,154L413,152L414,152L415,150L415,148L416,146L418,145L420,141L421,140L423,140L425,137L427,137L429,134L429,130L430,127L430,126L432,123L435,122L437,121L439,117L439,116L441,116L442,117L445,117L447,117L448,117L450,116L453,115L455,114L457,113L461,112L465,112L466,113L468,111L471,111L472,112L473,112L476,111L477,111L477,113L479,111L479,112L478,114L478,115L479,116L478,118L477,120L477,122L478,122L479,123L480,124L483,125L484,125L486,125L489,127L490,129L492,130L495,131L498,133L499,132L500,131L500,128L500,127L502,125L504,125L507,125L508,127L509,127L509,127L512,128L512,129L515,129L518,130L520,130L521,131L523,130L524,129L526,129L528,129L529,131L529,130L531,130L533,131L534,130L535,129L535,129L535,127L535,125L536,124L536,124L536,121L538,119L538,119L537,117L538,115L537,114L538,113L536,113L534,112L533,114L529,115L527,113L525,113L524,114L523,114L520,113L518,113L516,110L515,108L516,106L514,104L517,101L520,101L521,99L525,99L528,98L530,97L534,97L538,99L542,100L544,99L546,100L549,98L549,97L548,95L547,94L545,93L544,93L541,90L539,89L537,87L538,87L540,85L538,83L542,82L541,82L539,82L538,82L536,83L534,83L533,84L533,86L534,87L536,87L536,88L534,88L531,90L529,89L530,88L527,87L528,87L530,86L529,85L526,84L525,83L523,84L523,85L521,87L521,88L520,89L519,88L519,92L518,93L517,95L518,97L518,98L520,99L520,100L517,100L516,101L514,102L514,101L514,100L512,100L511,100L508,101L510,102L509,103L508,103L506,101L506,102L507,104L508,105L507,106L508,107L509,108L509,110L507,109L508,111L506,111L507,114L506,114L504,112L503,110L503,108L502,106L500,105L500,104L500,104L500,103L499,102L498,101L499,99L499,98L499,97L498,97L497,96L497,95L494,94L493,93L491,92L489,90L490,90L489,89L489,88L487,87L487,89L486,88L486,87L486,87L487,86L485,86L483,87L483,88L483,89L484,91L486,92L487,95L489,97L491,97L491,98L491,98L493,99L494,100L496,102L497,102L496,103L495,102L493,101L492,103L494,104L493,106L492,106L491,109L490,109L490,108L491,106L491,106L490,104L490,103L489,102L488,101L487,100L486,99L484,99L482,98L480,96L479,94L478,91L477,91L475,90L474,90L473,92L472,92L470,93L466,93L462,94L462,95L462,97L460,99L457,100L456,101L455,102L454,105L454,106L453,108L452,110L450,110L449,113L446,113L443,113L442,114L441,115L440,115L439,114L439,112L436,111L435,112L434,112L433,112L434,110L434,108L433,108L432,106L433,105L434,103L434,102L435,100L435,99L435,98L435,97L435,95L434,94L438,92L441,92L443,92L446,93L448,93L451,93L453,91L454,85L452,82L450,81L447,80L447,78L450,77L454,78L453,75L455,76L461,74L461,72L463,71L465,71L466,70L468,66L471,65L473,65L474,64L475,64L476,65L477,64L477,63L477,61L476,60L476,57L477,57L477,56L479,56L480,55L481,54L481,56L481,56L481,57L482,58L481,58L481,58L479,60L480,61L480,62L482,63L481,64L484,63L485,62L487,63L488,64L489,64L493,62L495,62L497,62L497,63L499,63L500,61L503,61L502,59L502,57L503,55L505,54L507,56L508,56L509,54L509,53L508,53L507,52L507,51L509,50L511,50L514,50L516,50L518,49L516,48L512,48L509,49L506,49L504,48L503,47L503,45L502,43L503,42L505,41L509,38L510,38L510,37L507,36L504,37L502,38L503,39L500,41L496,43L495,46L496,48L498,49L496,52L494,52L493,56L492,58L489,58L488,60L486,60L485,58L484,55L482,52L481,50L477,53L474,54L472,52L471,50L472,45L473,43L479,41L482,39L486,36L491,33L494,31L499,29L502,28L505,28L508,27L511,27L514,27L520,28L517,28L519,30L521,29L524,30L529,30L536,33L538,33L538,35L536,36L533,36L525,35L524,35L527,36L528,39L530,40L532,41L532,40L530,39L532,38L536,39L538,39L536,37L540,35L542,35L544,36L544,35L542,34L543,32L542,31L547,32L548,33L546,33L546,34L548,35L550,35L550,33L554,32L559,31L561,31L559,32L562,32L563,32L566,32L568,31L571,32L572,31L570,30L571,29L576,30L579,30L586,32L587,31L585,30L584,30L582,30L582,29L581,28L581,27L583,26L583,24L584,24L589,24L590,25L589,26L590,27L592,28L593,31L595,32L595,33L593,36L595,36L596,35L597,35L597,34L598,33L597,32L597,31L595,30L594,29L594,28L591,26L594,25L592,24L593,24L595,25L595,26L597,27L596,26L598,25L601,25L605,26L603,24L602,23L604,23L608,23L612,22L610,22L611,21L613,21L616,20L620,20L620,19L624,19L626,20L629,19L632,19L632,18L633,18L636,17L639,18L637,18L641,18L642,19L644,19L648,19L653,19L655,20L655,20L654,21L650,22L649,22L652,22L654,23L656,22L657,23L658,23L660,23L666,23L667,24L674,24L673,23L677,23L680,23L683,24L685,25L685,25L689,27L692,27L692,26L696,26L698,26L702,26L703,26L706,26L702,25L704,24L721,25L723,26L730,27L736,27L740,27L743,28L744,29L747,30L749,29L752,29L756,30L759,29L764,31L766,31L762,29L762,29L768,29L772,29L778,30ZM566,99L567,101L568,101L569,102L567,102L567,104L567,106L566,106L566,108L567,110L570,111L572,112L575,113L578,112L579,111L578,109L578,106L576,105L576,103L574,103L575,100L577,101L579,100L577,98L576,96L574,97L574,99L573,97L573,97L573,95L573,94L570,93L568,91L567,90L567,89L569,89L569,87L571,87L573,87L572,85L572,83L570,83L568,82L565,84L563,84L563,86L561,86L559,89L561,92L561,94L564,97ZM297,30L295,31L293,30L291,31L290,30L292,29L294,29L296,29L296,29L296,30ZM774,26L776,27L775,27L773,27ZM774,26L775,26L776,26L779,27L780,27L778,27L776,27ZM863,60L863,60L862,60L861,61L860,62L857,63L857,62L857,61L858,60L859,59L861,59L860,58L860,58L863,60ZM140,58L144,56L145,56L148,55L151,53L154,52L151,52L150,52L148,53L149,52L147,52L147,52L168,39L189,28L189,28L191,27L192,27L197,26L199,27L198,28L200,27L202,27L202,28L204,28L206,28L209,28L212,29L213,29L215,29L217,29L219,29L221,30L222,31L224,31L227,30L230,29L232,30L236,29L239,28L240,29L241,29L243,28L244,28L245,30L249,28L247,30L250,30L251,29L253,29L254,30L258,31L260,31L262,31L263,32L259,33L262,33L267,33L269,32L269,34L272,33L271,32L273,31L276,31L277,31L278,31L279,32L281,32L283,33L286,33L289,33L290,32L292,31L294,32L292,34L295,32L296,32L299,30L298,29L297,29L300,27L303,26L305,26L306,27L306,28L303,29L306,30L306,30L304,32L308,30L309,31L307,33L307,34L311,33L314,31L316,29L318,29L320,29L322,30L321,31L319,32L319,33L318,34L313,35L310,36L309,35L307,36L304,38L302,39L299,40L296,40L294,41L292,43L290,43L285,45L281,47L278,49L276,52L278,52L277,54L276,56L280,56L282,57L284,58L284,59L286,59L287,60L291,61L293,61L291,63L290,66L289,68L290,71L293,70L296,67L297,63L297,62L301,61L304,59L307,57L308,56L308,54L307,52L311,49L312,47L315,44L316,43L319,44L321,44L323,44L324,44L325,46L325,47L328,47L327,49L325,52L327,52L327,53L331,52L335,49L337,48L337,50L337,53L338,56L336,58L338,59L339,61L342,61L343,62L342,64L344,65L344,66L343,68L340,69L339,70L335,71L331,74L327,74L323,73L320,73L317,74L314,76L311,77L306,80L302,83L304,82L310,79L315,77L319,76L320,78L317,79L316,82L316,85L318,86L322,86L325,82L325,84L326,85L322,87L316,89L314,90L310,92L309,92L310,90L315,87L311,87L308,88L308,89L305,90L303,91L300,92L298,94L297,94L296,96L296,97L297,97L298,96L298,97L297,98L296,98L295,98L293,99L292,99L290,99L288,100L292,99L292,100L288,101L287,101L287,100L286,101L287,101L285,104L283,106L283,105L282,105L282,104L282,106L282,106L282,108L280,109L278,111L278,111L279,109L279,108L280,105L279,107L278,108L277,108L278,109L277,112L277,112L277,113L276,116L274,119L271,119L269,121L268,121L266,123L265,124L262,126L260,127L258,129L257,131L257,134L257,136L257,139L256,140L256,144L256,146L255,147L254,149L253,150L252,149L252,148L251,147L251,144L251,142L251,141L252,138L252,137L251,134L250,133L247,135L247,135L246,133L245,132L242,133L240,132L238,133L237,133L237,134L237,135L237,136L236,136L235,136L234,137L233,136L231,135L229,135L228,134L226,135L224,135L221,138L218,139L216,141L215,142L214,144L214,146L214,147L214,147L214,147L212,150L211,152L209,157L208,158L208,160L209,162L208,164L209,167L209,169L210,170L212,171L213,173L216,172L218,171L220,171L221,170L223,169L224,167L225,164L226,163L228,162L231,162L233,162L234,161L235,162L234,164L232,166L231,168L232,168L231,170L230,172L229,172L229,172L229,172L229,172L229,173L228,174L228,175L228,176L228,177L227,178L227,179L226,179L225,180L226,181L226,181L227,181L227,181L228,180L229,180L229,181L229,181L230,181L232,181L232,180L233,180L234,180L234,180L235,180L235,180L236,181L237,181L237,181L238,182L239,182L239,183L239,184L239,185L239,186L238,187L238,188L237,190L237,191L237,192L237,193L236,194L236,195L236,196L236,197L236,197L237,199L237,201L238,202L239,203L239,204L240,204L240,204L241,205L242,204L243,204L245,203L246,202L247,202L247,202L249,202L250,203L250,204L251,205L253,205L255,203L256,202L256,201L257,198L258,197L260,197L260,196L262,196L264,195L266,194L267,192L268,192L268,193L268,194L268,195L266,196L267,197L267,199L265,201L266,204L267,203L268,201L267,200L267,197L271,196L270,194L271,193L272,195L274,196L275,197L275,199L278,199L280,198L282,200L284,200L285,199L285,198L288,198L291,198L289,199L290,201L292,201L294,203L294,205L295,205L296,206L298,207L299,210L299,211L300,211L301,213L302,214L305,215L306,214L308,214L311,215L311,215L313,216L316,219L316,221L317,220L318,222L319,228L320,229L320,231L318,234L319,235L324,236L324,239L326,237L329,238L333,240L335,242L334,244L337,243L342,245L346,245L350,248L353,252L355,253L357,253L358,254L359,258L360,260L359,266L358,268L355,273L353,277L352,280L351,280L351,282L351,289L351,294L351,296L351,298L351,302L349,306L349,310L347,311L347,313L344,313L341,315L339,316L336,317L334,320L333,323L333,325L333,327L334,330L334,332L332,334L331,339L329,342L328,343L328,346L327,348L326,350L324,352L322,351L321,352L319,350L317,350L315,349L315,350L319,353L320,355L322,356L322,358L321,362L318,363L314,364L311,364L312,366L313,368L314,369L313,370L311,371L308,370L308,370L309,373L311,374L312,373L313,375L312,376L311,378L312,380L312,382L310,382L309,383L309,386L312,388L315,388L315,391L313,392L314,395L312,397L312,398L315,401L317,402L316,402L314,402L313,403L312,403L313,406L313,406L310,405L306,403L303,402L301,400L301,399L298,397L295,392L295,390L296,387L292,387L293,384L291,379L294,380L292,374L290,374L291,377L290,377L288,373L287,367L287,365L285,362L283,359L284,359L284,354L283,349L283,344L281,339L281,337L279,333L279,329L278,322L277,316L276,308L275,303L274,298L271,296L270,295L265,291L260,287L257,285L256,283L256,282L253,277L250,271L247,264L246,262L245,260L243,258L241,256L241,255L240,251L241,249L243,247L244,244L243,243L242,244L241,243L241,242L241,239L242,238L242,236L243,234L243,232L244,232L246,230L246,229L247,229L247,227L247,226L249,226L250,223L251,222L250,221L250,219L250,216L251,215L250,212L250,210L249,209L248,207L249,206L248,206L248,205L247,204L246,204L245,205L244,206L243,206L243,207L244,209L244,209L243,210L242,210L242,208L241,209L240,208L240,207L239,207L238,206L237,206L237,207L237,207L236,206L235,205L235,205L235,204L235,203L234,202L233,202L233,201L232,200L232,201L232,202L231,201L231,201L230,200L230,199L231,198L230,197L231,197L230,196L229,194L229,193L228,192L227,191L227,190L228,191L228,190L227,189L227,189L226,190L225,190L224,189L223,189L222,188L221,188L220,187L218,187L217,186L216,185L214,181L213,180L211,179L210,180L207,181L206,181L204,180L203,180L201,178L199,178L196,176L195,174L194,174L193,173L191,172L190,171L188,169L187,167L187,165L188,165L188,164L189,163L189,162L189,160L189,159L188,157L187,154L186,151L185,149L184,148L184,147L185,145L184,144L183,143L183,141L182,140L181,139L181,137L181,136L181,134L181,131L182,130L181,129L180,129L179,128L178,129L178,131L177,133L177,135L178,137L178,138L178,138L178,139L178,139L178,141L178,142L178,143L179,145L179,148L179,149L179,151L179,152L180,152L180,154L181,155L180,156L179,157L179,157L179,155L178,153L176,152L176,151L176,148L177,147L176,146L175,144L174,145L174,144L173,143L172,141L173,141L174,141L175,140L176,138L175,136L174,135L174,133L174,131L174,129L175,126L175,124L174,122L173,122L174,121L172,121L172,120L170,120L170,119L170,117L170,114L171,110L171,109L171,108L171,106L172,103L172,102L174,99L176,97L177,95L180,92L184,87L187,83L189,80L189,79L190,79L192,80L191,82L192,81L194,79L195,77L195,77L193,74L193,73L190,72L191,70L193,68L191,67L193,65L193,63L194,62L194,61L193,60L195,58L195,56L196,54L195,53L192,53L190,53L189,50L188,50L186,49L183,49L180,48L180,47L177,48L175,49L174,49L171,50L168,51L165,51L167,50L171,47L174,47L174,46L170,47L166,49L161,51L161,52L157,53L153,54L150,55L148,56L143,58L141,59L137,60L137,60L140,58ZM853,52L851,51L850,52L849,52L847,51L846,50L843,49L842,50L838,49L836,48L834,47L831,46L830,44L830,43L829,42L830,42L832,42L832,41L833,41L834,41L832,40L830,39L830,39L829,39L828,39L828,40L826,39L824,39L820,39L818,38L814,37L815,36L817,35L819,35L820,36L824,36L820,35L817,34L814,33L811,32L807,32L807,31L810,31L810,30L809,29L809,28L811,28L811,28L832,39L853,52ZM274,24L272,24L276,24L277,25L280,24L281,24L280,26L282,25L283,24L285,23L286,24L287,24L286,26L285,27L287,28L289,29L288,29L285,30L285,30L284,31L281,31L279,30L276,30L272,31L267,31L264,31L264,31L263,30L261,30L261,29L262,29L265,28L267,28L270,28L267,28L263,28L261,28L261,27L266,27L263,27L261,26L264,25L266,24L272,23ZM291,23L288,24L287,23L287,23L290,23ZM337,24L337,24L335,24L334,24L332,24L331,24L330,23L331,23L332,23L335,23ZM320,24L320,25L323,23L328,23L330,24L328,25L332,25L334,24L337,25L339,26L338,27L342,26L343,27L346,28L347,29L347,30L343,31L346,32L349,33L350,34L353,35L351,36L346,38L344,37L343,35L340,36L339,37L340,38L342,39L342,40L342,42L340,43L338,43L335,41L336,43L337,44L337,45L332,44L329,43L328,42L329,41L327,40L325,39L325,40L319,40L318,39L321,38L324,38L328,37L328,37L330,36L334,34L334,33L334,32L332,31L329,31L331,30L330,29L329,29L328,28L326,29L323,29L317,29L314,28L311,28L311,27L313,27L311,27L312,25L315,24L318,23L323,23ZM298,23L300,23L303,23L303,23L301,24L302,25L300,26L296,27L295,26L295,26L292,25L293,24L296,24L295,23ZM708,24L706,24L702,23L702,23L702,23L704,23L708,23ZM308,24L305,25L303,25L304,24L305,23L307,23L309,22L312,22L315,23L311,24ZM259,26L253,27L253,26L251,26L252,25L255,24L259,23L258,22L264,22L266,22L270,22L271,22L272,23L269,23L264,25L260,26ZM716,21L715,21L712,21L708,21L708,20L712,20ZM312,21L310,21L308,21L306,21L308,20L311,20L312,21ZM706,20L706,21L700,21L698,21L693,21L693,20L695,19L699,19ZM307,19L307,19L306,20L304,21L301,21L300,21L301,20L298,20L300,19L301,19L304,19L307,19ZM290,19L290,20L292,20L293,20L293,20L291,21L285,21L280,22L277,22L278,21L282,21L274,21L272,21L277,19L279,19L283,19L285,20L287,20L287,19L289,19L290,19ZM565,28L564,28L558,27L557,27L554,26L554,25L555,25L555,24L558,23L556,23L560,21L559,21L562,20L567,19L573,19L575,19L578,18L580,19L579,19L573,20L569,21L564,22L562,23L560,25L561,26ZM314,18L315,19L318,19L319,19L318,19L320,20L320,20L322,20L325,20L328,20L331,20L334,20L335,20L335,21L333,21L330,22L328,22L323,22L320,22L317,22L314,21L314,20L315,20L314,19L311,19L309,19L311,18ZM280,18L278,18L276,19L275,19L271,19L268,20L266,19L270,18L275,18L277,18ZM316,18L315,18L312,18L312,17L315,17L316,18ZM290,17L286,18L284,17L286,17L289,17L291,17ZM508,17L504,18L501,17L502,17L501,17L505,17L505,17ZM292,16L290,17L287,17L288,16L290,16L290,16ZM314,17L311,17L310,17L310,17L310,16L312,16L313,16L315,17ZM307,17L307,17L305,17L303,17L299,17L301,16L300,16L300,16L303,16L307,16ZM637,17L628,17L630,16L631,16L632,16L637,16ZM497,15L502,16L498,16L498,17L496,18L495,19L493,19L490,18L491,17L489,17L486,16L485,15L489,15L490,15L492,15L493,15L495,15ZM509,15L512,15L509,15L505,16L500,15L500,15L498,15L496,15L501,14L503,15L505,14ZM549,14L547,15L546,15L546,15L544,15L542,15L543,14L539,14L542,14L545,14L545,14L546,14L547,14L550,14ZM628,16L624,16L620,16L617,16L615,15L613,15L616,14L619,14L623,14L627,15ZM330,15L331,16L329,16L325,17L322,17L319,17L318,16L318,16L320,16L317,16L316,15L315,15L317,14L318,14L320,14L320,14L323,14L325,14L327,14L330,15ZM363,12L367,12L370,13L373,13L372,13L368,13L364,13L363,14L366,14L362,14L359,14L355,15L352,15L351,16L346,16L348,16L346,16L347,17L345,17L342,17L341,18L338,18L338,18L341,18L341,19L335,19L331,19L326,19L324,19L321,19L322,18L325,18L325,17L327,17L330,18L329,17L327,17L328,16L332,16L333,16L331,15L331,15L335,15L336,15L339,15L336,14L330,14L328,14L327,14L325,14L325,13L328,13L330,13L333,13L336,13L338,13L339,13L341,13L343,12L346,12L351,12L351,12L356,12L359,12ZM427,12L436,13L433,13L427,13L419,13L420,13L425,13L430,13L433,13L434,13L432,14L436,14L444,13L449,13L449,14L443,14L442,15L437,15L440,15L438,16L436,16L436,18L437,18L435,18L432,19L435,19L435,21L433,21L434,22L431,22L432,23L431,23L429,23L427,23L428,24L428,25L425,24L424,25L426,25L428,26L428,28L425,28L423,27L422,26L422,27L419,28L424,28L426,29L421,30L415,32L410,32L408,32L406,33L402,35L397,36L396,36L393,37L391,37L388,39L387,40L386,41L382,43L382,45L380,47L377,49L375,49L373,47L369,47L368,46L368,44L366,41L366,40L367,38L366,36L368,35L367,34L371,32L374,31L375,30L376,29L374,30L373,30L371,30L369,29L370,28L372,27L373,27L376,28L374,27L373,26L371,26L370,26L373,24L373,24L372,23L372,21L370,21L371,20L367,19L363,19L359,19L355,19L353,19L351,18L356,18L359,18L353,18L350,17L350,17L357,16L364,16L365,15L361,15L362,14L369,14L371,14L371,13L375,13L379,13L384,13L386,13L390,13L394,13L396,13L399,13L396,13L396,13L402,12L407,12L409,12L415,12Z","sphere":"M226,10L500,10L774,10L822,33L842,45L861,58L879,73L896,88L911,105L925,122L936,140L945,158L953,177L958,196L961,216L962,235L961,254L958,274L953,293L945,312L936,330L925,348L911,365L896,382L879,397L861,412L842,425L822,437L774,460L500,460L226,460L178,437L158,425L139,412L121,397L104,382L89,365L75,348L64,330L55,312L47,293L42,274L39,254L38,235L39,216L42,196L47,177L55,158L64,140L75,122L89,105L104,88L121,73L139,58L158,45L178,33L226,10Z","pts":{"그리스":[505,107],"로마":[483,97],"유럽":[461,80],"지중해":[495,118],"이집트":[527,143],"메소포타미아":[558,126],"이스라엘":[536,128],"이란":[579,134],"아라비아":[555,160],"인도":[643,157],"중국":[716,120],"몽골":[682,82],"한국":[749,112],"일본":[773,116],"아메리카":[226,167],"세계":[377,320]}}};
+const EV=D.events, LINKS=D.links, CIVS=D.civs, BOOKS=D.books, MAP=D.map;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const st={get(k,f){try{const v=localStorage.getItem(k);return v==null?f:JSON.parse(v)}catch{return f}},getRaw(k){try{return localStorage.getItem(k)||''}catch{return ''}},set(k,v){try{localStorage.setItem(k,typeof v==='string'?v:JSON.stringify(v));return true}catch{return false}}};
+const done=new Set(st.get('historyDoneV3',[]));
+const chDone=st.get('hd-v6-done',{})||{};
+const yLong=y=>y<0?`기원전 ${-y}년`:`${y}년`;
+const yBig=y=>y<0?`<span class="bc">BC</span>${-y}`:`${y}`;
+const dYears=(a,b)=>{const d=b-a;return d===0?'같은 해':Math.abs(d)+'년 '+(d>0?'뒤':'전')};
+
+/* ---------- lanes & scale ---------- */
+const LANES=[
+ {k:'med',n:'그리스·로마·유럽',s:'지중해 세계',r:['그리스','로마','유럽','지중해']},
+ {k:'ane',n:'근동·이집트',s:'성경의 무대',r:['메소포타미아','이집트','이스라엘','아라비아']},
+ {k:'iran',n:'이란',s:'페르시아',r:['이란']},
+ {k:'ind',n:'인도',s:'남아시아',r:['인도']},
+ {k:'eas',n:'중국·몽골·일본',s:'동아시아',r:['중국','몽골','일본']},
+ {k:'kor',n:'한국',s:'한반도',r:['한국']},
+ {k:'wld',n:'아메리카·세계',s:'대서양 너머',r:['아메리카','세계']}];
+const laneOf=reg=>LANES.findIndex(l=>l.r.includes(reg));
+const ERAS=[[-3000,-1200,'청동기',330],[-1200,-500,'철기와 제국',340],[-500,500,'고전 고대',920],[500,1500,'중세',700],[1500,1800,'근세',330],[1800,2030,'근현대',470]];
+const PADL=24, PADR=190, W=ERAS.reduce((s,e)=>s+e[3],0);
+function X(y){let x=PADL;for(const[a,b,,w]of ERAS){if(y<=b)return x+(Math.max(y,a)-a)/(b-a)*w;x+=w}return x}
+function Yr(px){let x=PADL;for(const[a,b,,w]of ERAS){if(px<=x+w)return Math.round(a+Math.max(0,px-x)/w*(b-a));x+=w}return 2030}
+const eraOf=y=>(ERAS.find(e=>y<=e[1])||ERAS[ERAS.length-1])[2];
+const sorted=[...EV].sort((a,b)=>a.year-b.year);
+const civByName=n=>CIVS.findIndex(c=>c.name===n);
+
+/* ---------- tile art ---------- */
+const MOTIF={그리스:'greece',로마:'rome',유럽:'europe',지중해:'sea',이집트:'egypt',메소포타미아:'zig',이스라엘:'wall',아라비아:'dune',이란:'iwan',인도:'stupa',중국:'pagoda',몽골:'ger',한국:'hanok',일본:'torii',아메리카:'meso',세계:'globe'};
+function motif(name){
+ let s='';const R=(x,y,w,h,c)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" class="${c}"/>`;
+ switch(name){
+ case 'greece':s+=`<circle cx="74" cy="28" r="11" class="h" opacity=".8"/>`+R(10,106,80,8,'m')+R(14,100,72,6,'k');for(let i=0;i<5;i++){const x=19+i*13.6;s+=R(x,62,7,38,'k')+R(x+4.6,62,2.4,38,'m')}s+=R(14,54,72,8,'k')+`<polygon points="12,54 50,33 88,54" class="k"/><polygon points="24,51 50,39 76,51" class="m"/>`;break;
+ case 'rome':s+=R(4,40,92,74,'k')+R(4,77,92,3,'m');for(let i=0;i<5;i++){const x=8+i*18;s+=`<path d="M${x} 114V92a7 7 0 0 1 14 0V114Z" class="l"/>`}for(let i=0;i<7;i++){const x=7+i*12.9;s+=`<path d="M${x} 74V58a4.5 4.5 0 0 1 9 0V74Z" class="l"/>`}s+=R(4,40,92,6,'m');break;
+ case 'europe':{const f=['k','m','k','m','k','m','l'];for(let i=0;i<7;i++){const q=1-i*.13,w=86*q,h=104*q,by=118-i*4.5,l=50-w/2,r=50+w/2;s+=`<path d="M${l} ${by}V${by-h*.52}Q${l} ${by-h*.9} 50 ${by-h}Q${r} ${by-h*.9} ${r} ${by-h*.52}V${by}Z" class="${f[i]}"/>`}s+=R(0,118,100,12,'k');break}
+ case 'sea':s+=`<circle cx="70" cy="34" r="14" class="h" opacity=".85"/>`+R(0,92,100,38,'m')+`<path d="M30 88L50 88L46 94L34 94Z" class="k"/><path d="M41 86V36" class="sk" stroke-width="1.6"/><path d="M42 40L62 82H42Z" class="k"/><path d="M40 46L24 80H40Z" class="m"/>`;for(let i=0;i<5;i++){const y=100+i*6;s+=`<path d="M0 ${y}q6-3 12 0t12 0t12 0t12 0t12 0t12 0t12 0t12 0t12 0" class="sk" stroke-width="1" opacity=".7"/>`}break;
+ case 'egypt':s+=`<circle cx="74" cy="34" r="10" class="h"/>`+`<polygon points="4,114 44,50 84,114" class="k"/><polygon points="44,50 84,114 58,114" class="m"/><polygon points="58,114 80,80 102,114" class="k"/><polygon points="80,80 102,114 88,114" class="m"/>`+R(0,113,100,17,'m');break;
+ case 'zig':s+=R(8,98,84,16,'k')+R(20,82,60,16,'m')+R(30,66,40,16,'k')+R(39,52,22,14,'m')+R(46,52,8,62,'l');for(let y=56;y<114;y+=4)s+=`<path d="M46 ${y}H54" class="sk" stroke-width=".7"/>`;s+=R(0,114,100,16,'m');break;
+ case 'wall':s+=`<path d="M0 80Q25 56 50 72T100 66V130H0Z" class="m"/>`+R(10,72,80,42,'k')+R(4,62,16,52,'k')+R(80,62,16,52,'k');for(let i=0;i<9;i++)s+=R(11+i*9,67,5,5,'k');s+=`<path d="M41 114V94a9 9 0 0 1 18 0V114Z" class="l"/>`;for(let y=80;y<112;y+=7)s+=`<path d="M10 ${y}H90" class="sl" stroke-width=".6" opacity=".6"/>`;s+=R(0,114,100,16,'m');break;
+ case 'dune':s+=`<path d="M70 22a12 12 0 1 0 10 19a9.5 9.5 0 1 1-10-19Z" class="h"/><circle cx="30" cy="30" r="1.2" class="h"/><circle cx="44" cy="20" r="1" class="h"/>`+`<path d="M0 92Q30 70 60 90T100 84V130H0Z" class="m"/><path d="M0 108Q35 86 70 106T100 104V130H0Z" class="k"/>`;break;
+ case 'iwan':s+=R(14,28,72,86,'k');for(let x=18;x<84;x+=6)s+=`<path d="M${x} 30V112" class="sl" stroke-width=".5" opacity=".5"/>`;s+=`<path d="M28 114V64Q28 44 50 36Q72 44 72 64V114Z" class="m"/><path d="M36 114V70Q36 56 50 50Q64 56 64 70V114Z" class="l"/>`+R(14,24,72,5,'m')+R(0,114,100,16,'k');break;
+ case 'stupa':s+=`<circle cx="22" cy="28" r="8" class="h" opacity=".8"/>`+R(10,102,80,12,'k')+R(18,94,64,8,'m')+`<path d="M20 94A30 30 0 0 1 80 94Z" class="k"/><path d="M50 64A30 30 0 0 1 80 94H62A22 30 0 0 0 50 64Z" class="m"/>`+R(44,56,12,8,'m')+R(48.5,32,3,26,'k')+R(41,50,18,2.6,'k')+R(43,44,14,2.6,'k')+R(45,38,10,2.6,'k')+R(0,114,100,16,'m');break;
+ case 'pagoda':for(let i=0;i<5;i++){const w=64-i*10,y=106-i*15,l=50-w/2,r=50+w/2;s+=R(l+7,y-9,w-14,10,'m')+`<path d="M${l-6} ${y-8}L${l+4} ${y-15}H${r-4}L${r+6} ${y-8}Q50 ${y-12} ${l-6} ${y-8}Z" class="k"/>`}s+=R(48.6,18,2.8,16,'k')+R(14,104,72,10,'k')+R(0,114,100,16,'m');break;
+ case 'hanok':s+=`<path d="M0 74L22 46L40 64L62 36L100 72V130H0Z" class="m" opacity=".75"/><path d="M6 60Q18 66 28 52H72Q82 66 94 60L86 70H14Z" class="k"/>`;for(let x=24;x<78;x+=4)s+=`<path d="M${x} 53V69" class="sl" stroke-width=".6" opacity=".55"/>`;s+=R(16,70,68,5,'m')+R(22,75,5,37,'k')+R(73,75,5,37,'k')+R(40,75,4,37,'k')+R(56,75,4,37,'k')+R(27,78,46,3,'m')+R(10,110,80,4,'k')+R(0,114,100,16,'m');break;
+ case 'torii':s+=`<circle cx="50" cy="52" r="26" class="h" opacity=".85"/><path d="M6 36Q50 46 94 36L92 45Q50 52 8 45Z" class="k"/>`+R(16,56,68,5,'k')+R(25,44,6.5,72,'k')+R(68.5,44,6.5,72,'k')+R(46.5,49,7,7,'k')+R(0,114,100,16,'m');for(let i=0;i<3;i++)s+=`<path d="M10 ${119+i*4}H90" class="sl" stroke-width=".8"/>`;break;
+ case 'ger':s+=`<path d="M0 96Q30 80 60 92T100 88V130H0Z" class="m"/>`+R(24,86,52,28,'k')+`<path d="M20 88Q50 58 80 88Z" class="m"/>`+R(45,98,10,16,'l');for(let x=28;x<74;x+=6)s+=`<path d="M${x} 90L${x+6} 112M${x+6} 90L${x} 112" class="sl" stroke-width=".5" opacity=".5"/>`;s+=R(46,62,8,4,'k')+R(0,114,100,16,'m');break;
+ case 'meso':s+=R(6,98,88,16,'k')+R(16,84,68,14,'m')+R(25,70,50,14,'k')+R(33,58,34,12,'m')+R(39,42,22,16,'k')+R(46,48,8,10,'l')+R(44,58,12,56,'l');for(let y=61;y<114;y+=4)s+=`<path d="M44 ${y}H56" class="sk" stroke-width=".7"/>`;s+=R(0,114,100,16,'m');break;
+ case 'globe':s+=`<circle cx="50" cy="64" r="34" class="k"/><ellipse cx="50" cy="64" rx="13" ry="34" class="sl" stroke-width=".8"/><ellipse cx="50" cy="64" rx="25" ry="34" class="sl" stroke-width=".8"/><path d="M16 64H84M20 47H80M20 81H80" class="sl" stroke-width=".8"/><ellipse cx="50" cy="64" rx="46" ry="12" class="sk" stroke-width="1.2" transform="rotate(-18 50 64)"/>`;break;
+ case 'tower':s+=`<polygon points="14,130 38,8 62,8 86,130" class="k"/><polygon points="50,8 62,8 86,130 50,130" class="m"/>`;for(let i=1;i<14;i++){const t=i/14,y=8+t*t*122,l=38-24*t*t,r=62+24*t*t;s+=`<path d="M${l} ${y}H${r}" class="sl" stroke-width=".7"/>`}for(let i=1;i<6;i++){const f=i/6;s+=`<path d="M${38+24*f} 8L${14+72*f} 130" class="sl" stroke-width=".6" opacity=".7"/>`}s+=`<polygon points="0,130 0,60 12,54 20,130" class="m"/><polygon points="100,130 100,70 90,64 82,130" class="m"/>`;break;
+ }
+ return s}
+function tile(region,year,ratio){const m=(year>=1900&&region!=='한국')?'tower':(MOTIF[region]||'globe');
+ return `<svg class="tile" viewBox="0 0 100 130" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="100" height="130" fill="url(#gSky)"/><rect width="100" height="130" fill="url(#pDots)" opacity=".09"/>${motif(m)}<rect width="100" height="130" fill="url(#gShade)"/></svg>`}
+
+/* ---------- hero ---------- */
+const PICK=[2,5,13,18,27,39,45,52];
+$('collage').innerHTML=PICK.map((id,i)=>{const e=EV[id];return `<button class="cItem ${i%2?'flip':''}" data-ev="${id}" type="button"><span class="yr">${yBig(e.year)}</span><span class="ph">${tile(e.region,e.year)}</span><p><b>${esc(e.title)}</b>${esc(e.region)}</p></button>`}).join('');
+$('facts').innerHTML=[[EV.length,'역사 사건'],[CIVS.length,'문명 아카이브'],[BOOKS.length,'고전 작품'],[LINKS.length,'인과 연결']].map(([n,l])=>`<div><span class="yr">${n}</span><span>${l}</span></div>`).join('');
+
+/* ---------- lanes chart ---------- */
+let year=-331, showLinks=true, showBooks=true, hotId=null;
+const ROWH=24, LANEPAD=12, AXISH=50;
+let layout=null;
+function computeLayout(){
+ const lanes=LANES.map(()=>({rows:[],items:[]}));
+ const place=(lane,x,w,item)=>{const rows=lanes[lane].rows;let r=rows.findIndex(end=>end<x-6);if(r<0){r=rows.length;rows.push(-1e9)}rows[r]=x+w;item.row=r;lanes[lane].items.push(item)};
+ for(const e of sorted){const li=laneOf(e.region);const x=X(e.year);place(li,x-6,e.title.length*12.4+22,{e,x})}
+ const blane={rows:[],items:[]};
+ if(showBooks){const bs=BOOKS.map((b,i)=>({b,i,x:X(b.y)})).sort((a,c)=>a.x-c.x);for(const it of bs){const rows=blane.rows;const x0=it.b.set?Math.min(X(it.b.set[0]),it.x):it.x;let r=rows.findIndex(end=>end<x0-6);if(r<0){r=rows.length;rows.push(-1e9)}rows[r]=it.x+it.b.title.length*12+22;it.row=r;blane.items.push(it)}}
+ let y=AXISH;const L=lanes.map((l,i)=>{const h=Math.max(1,l.rows.length)*ROWH+LANEPAD*2;const o={y,h,items:l.items};y+=h;return o});
+ let B=null;if(showBooks){const h=Math.max(1,blane.rows.length)*ROWH+LANEPAD*2;B={y,h,items:blane.items};y+=h}
+ const pos={};L.forEach(l=>l.items.forEach(it=>pos[it.e.id]=[it.x,l.y+LANEPAD+it.row*ROWH+ROWH/2]));
+ return {L,B,H:y+6,pos}}
+function drawLanes(){
+ layout=computeLayout();const {L,B,H,pos}=layout;const TW=W+PADL+PADR;
+ let s='';
+ let x=PADL;ERAS.forEach(([a,b,n,w],i)=>{s+=`<rect class="eraBand ${i%2?'alt':''}" x="${x}" y="0" width="${w}" height="${H}"/><text class="eraLbl" x="${x+8}" y="16">${n.toUpperCase?n:n}</text>`;x+=w});
+ const ticks=[-3000,-2500,-2000,-1500,-1200,-1000,-800,-600,-500,-300,-100,0,100,300,500,700,900,1100,1300,1500,1600,1700,1800,1900,2000];
+ ticks.forEach(t=>{const tx=X(t);s+=`<line class="tick" x1="${tx}" y1="30" x2="${tx}" y2="${H}"/><text class="tickLbl" x="${tx+3}" y="${AXISH-8}">${t<0?'BC'+(-t):t}</text>`});
+ L.forEach(l=>s+=`<line class="laneSep" x1="0" y1="${l.y}" x2="${TW}" y2="${l.y}"/>`);
+ if(B)s+=`<line class="laneSep" x1="0" y1="${B.y}" x2="${TW}" y2="${B.y}" style="stroke:var(--line)"/>`;
+ s+=`<g id="curG"></g>`;
+ if(showLinks){s+='<g id="linkG">'+LINKS.map(([a,b],i)=>{const p=pos[a],q=pos[b];if(!p||!q)return'';const mx=(p[0]+q[0])/2,bend=Math.max(18,Math.abs(q[1]-p[1])*.25);return `<path class="link" data-l="${i}" d="M${p[0]} ${p[1]}C${mx} ${p[1]-bend} ${mx} ${q[1]-bend} ${q[0]} ${q[1]}"/>`}).join('')+'</g>'}
+ L.forEach(l=>l.items.forEach(it=>{const [px,py]=pos[it.e.id];s+=`<g class="node ${done.has(it.e.id)?'done':''}" data-ev="${it.e.id}" tabindex="0" role="button" aria-label="${esc(yLong(it.e.year)+' '+it.e.title)}"><circle cx="${px}" cy="${py}" r="5.5"/><text x="${px+10}" y="${py+4}">${esc(it.e.title)}</text></g>`}));
+ if(B)B.items.forEach(it=>{const py=B.y+LANEPAD+it.row*ROWH+ROWH/2,b=it.b;let g='';if(b.set){const a=X(b.set[0]),c=X(b.set[1]);g+=`<rect class="setbar" x="${a}" y="${py-3}" width="${Math.max(3,c-a)}" height="6"/>`;if(Math.abs(it.x-c)>8)g+=`<path class="arc" d="M${c} ${py}Q${(c+it.x)/2} ${py-16} ${it.x} ${py}"/>`}
+  g+=`<path class="dia" d="M${it.x} ${py-6}L${it.x+6} ${py}L${it.x} ${py+6}L${it.x-6} ${py}Z"/><text x="${it.x+10}" y="${py+4}">${esc(b.title)}</text>`;s+=`<g class="bk" data-bk="${it.i}" tabindex="0" role="button" aria-label="${esc(b.title)} 고전 보기" style="cursor:pointer">${g}</g>`});
+ const svg=$('lanes');svg.setAttribute('width',TW);svg.setAttribute('height',H);svg.setAttribute('viewBox',`0 0 ${TW} ${H}`);svg.innerHTML=s;
+ $('laneNames').innerHTML=`<div style="height:${AXISH}px;border-top:0" class="mono sub">지역</div>`+L.map((l,i)=>`<div style="height:${l.h}px"><span>${LANES[i].n}<small>${LANES[i].s}</small></span></div>`).join('')+(B?`<div style="height:${B.h}px"><span>고전 문학<small>기록 시점 · 배경</small></span></div>`:'');
+ drawCursor()}
+function drawCursor(){
+ if(!layout)return;const cx=X(year),H=layout.H;
+ const g=$('curG');if(!g)return;
+ const w=X(Math.min(2030,year+150))-X(Math.max(-3000,year-150));
+ g.innerHTML=`<rect class="curBand" x="${X(Math.max(-3000,year-150))}" y="${AXISH-4}" width="${w}" height="${H-AXISH}"/><line class="cur" x1="${cx}" y1="22" x2="${cx}" y2="${H}"/><g class="curTag"><rect x="${cx-34}" y="20" width="68" height="18" rx="2"/><text x="${cx}" y="33" text-anchor="middle">${year<0?'BC '+(-year):'AD '+year}</text></g>`;
+ const near=new Set(EV.filter(e=>Math.abs(e.year-year)<=150).map(e=>e.id));
+ document.querySelectorAll('#lanes .node').forEach(n=>n.classList.toggle('near',near.has(+n.dataset.ev)));
+ $('curYear').innerHTML=yBig(year);$('curEra').textContent=eraOf(year)+' · ±150년 표시';
+ $('yearRange').value=Math.round((cx-PADL)/W*1000);
+}
+function setYear(y,opts={}){year=Math.max(-3000,Math.min(2025,Math.round(y)));drawCursor();renderSlice();renderMap();if(opts.scroll){const sc=$('laneScroll');sc.scrollTo({left:X(year)-sc.clientWidth/2,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'})}}
+function hot(id){hotId=id;document.querySelectorAll('#lanes .link').forEach(p=>{const [a,b]=LINKS[+p.dataset.l];p.classList.toggle('hot',id!=null&&(a===id||b===id))});document.querySelectorAll('#lanes .node').forEach(n=>n.classList.toggle('hot',+n.dataset.ev===id))}
+const lanesSvg=$('lanes');
+let dragging=false;
+function svgX(ev){const r=lanesSvg.getBoundingClientRect();return (ev.clientX-r.left)*(lanesSvg.viewBox.baseVal.width/r.width)}
+lanesSvg.addEventListener('pointerdown',ev=>{const n=ev.target.closest('[data-ev],[data-bk]');if(n)return;if(ev.pointerType==='mouse'){dragging=true;lanesSvg.setPointerCapture(ev.pointerId)}setYear(Yr(svgX(ev)))});
+lanesSvg.addEventListener('pointermove',ev=>{if(dragging)setYear(Yr(svgX(ev)));const n=ev.target.closest('[data-ev]');const id=n?+n.dataset.ev:null;if(id!==hotId)hot(id)});
+lanesSvg.addEventListener('pointerup',()=>dragging=false);
+lanesSvg.addEventListener('pointerleave',()=>{if(!dragging)hot(null)});
+lanesSvg.addEventListener('click',ev=>{const n=ev.target.closest('[data-ev]');if(n){const e=EV[+n.dataset.ev];setYear(e.year);openEvent(e.id);return}const b=ev.target.closest('[data-bk]');if(b)openBook(+b.dataset.bk)});
+lanesSvg.addEventListener('keydown',ev=>{if(ev.key!=='Enter'&&ev.key!==' ')return;const n=ev.target.closest('[data-ev]');const b=ev.target.closest('[data-bk]');if(n||b)ev.preventDefault();if(n){setYear(EV[+n.dataset.ev].year);openEvent(+n.dataset.ev)}else if(b)openBook(+b.dataset.bk)});
+lanesSvg.addEventListener('focusin',ev=>{const n=ev.target.closest('[data-ev]');if(n)hot(+n.dataset.ev)});
+$('yearRange').addEventListener('input',e=>{setYear(Yr(PADL+e.target.value/1000*W),{scroll:true})});
+$('showLinks').addEventListener('change',e=>{showLinks=e.target.checked;drawLanes()});
+$('showBooks').addEventListener('change',e=>{showBooks=e.target.checked;drawLanes()});
+const JUMPS=[[-1750,'함무라비'],[-586,'바벨론 포로'],[-331,'가우가멜라'],[30,'예수 시대'],[668,'고구려 멸망'],[1392,'조선 건국'],[1592,'임진왜란'],[1945,'종전']];
+$('jumpers').innerHTML=JUMPS.map(([y,n])=>`<button class="chip" type="button" data-jump="${y}">${n}</button>`).join('');
+$('jumpers').addEventListener('click',e=>{const b=e.target.closest('[data-jump]');if(b)setYear(+b.dataset.jump,{scroll:true})});
+
+/* ---------- slice ---------- */
+function renderSlice(){
+ $('sliceTitle').textContent=`${yLong(year)}의 세계`;
+ $('sliceGrid').innerHTML=LANES.map((l,i)=>{const evs=sorted.filter(e=>l.r.includes(e.region));const prev=[...evs].reverse().find(e=>e.year<=year);const next=evs.find(e=>e.year>year);
+  const recent=prev&&year-prev.year<=300;
+  let body=recent?`<button type="button" data-ev="${prev.id}"><span class="t">${esc(prev.title)}</span><span class="d">${yLong(prev.year)} · ${year-prev.year===0?'바로 이 해':(year-prev.year)+'년 전'}</span></button>`:`<span class="t">이 무렵 연표에 기록된 사건이 없어요</span>${prev?`<span class="d">마지막 기록: ${esc(prev.title)} (${yLong(prev.year)})</span>`:''}`;
+  const nx=next?`<div class="nx">다음 → <button type="button" data-ev="${next.id}" style="display:inline">${esc(next.title)}</button> · ${next.year-year}년 뒤</div>`:'';
+  return `<div class="sCell ${recent?'':'empty'} ${l.k==='kor'?'kor':''}"><span class="mono">${l.n}</span>${body}${nx}</div>`}).join('')+`<div class="sCell"><span class="mono">고전 문학</span>${(()=>{const bs=BOOKS.map((b,i)=>({b,i})).filter(({b})=>Math.abs(b.y-year)<=200||(b.set&&year>=b.set[0]-30&&year<=b.set[1]+30));return bs.length?bs.slice(0,3).map(({b,i})=>`<button type="button" data-bk="${i}"><span class="t">${esc(b.title)}</span><span class="d">${b.set&&year>=b.set[0]-30&&year<=b.set[1]+30?'이 시대가 배경':'이 무렵 기록'}</span></button>`).join(''):'<span class="t" style="color:var(--sub);font-weight:400">이 무렵 기록되거나 배경이 된 작품이 없어요</span>'})()}</div>`;
+ const n=[...EV].sort((a,b)=>Math.abs(a.year-year)-Math.abs(b.year-year))[0];
+ $('sliceStrata').innerHTML=`<div class="stratum"><span>세계사</span><p><b>${esc(n.title)}</b>${yLong(n.year)} · ${esc(n.region)}<br>${esc(n.desc)}</p></div><div class="stratum"><span>성경 연구</span><p>${esc(n.bible)}</p></div><div class="stratum"><span>한국</span><p>${esc(n.korea)}</p></div><div style="padding:10px 14px;border-top:1px solid var(--line)"><button class="btn ghost" type="button" data-ev="${n.id}">이 사건 자세히 보기</button></div>`}
+document.addEventListener('click',e=>{const t=e.target.closest('#sliceGrid [data-ev],#sliceStrata [data-ev],#collage [data-ev],#regionCard [data-ev],#civView [data-ev],#doneChips [data-ev]');if(t){openEvent(+t.dataset.ev);return}const b=e.target.closest('#sliceGrid [data-bk],#civView [data-bk]');if(b)openBook(+b.dataset.bk)});
+
+/* ---------- map ---------- */
+const PTS=MAP.pts;delete PTS['세계'];
+const LBL={유럽:[-10,-4,'end'],로마:[-9,3,'end'],그리스:[0,-10,'middle'],지중해:[-7,11,'end'],이집트:[0,15,'middle'],이스라엘:[-9,3,'end'],메소포타미아:[0,-10,'middle'],이란:[9,4,'start'],아라비아:[8,10,'start'],인도:[9,4,'start'],중국:[-9,4,'end'],몽골:[9,-2,'start'],한국:[0,-10,'middle'],일본:[8,8,'start'],아메리카:[9,4,'start']};
+const ZOOMS=[['세계',[0,0,1000,470]],['구대륙',[400,40,420,198]],['지중해·근동',[448,62,170,80]]];
+let vb=[400,40,420,198], mapSel=null, zoomI=1;
+$('zooms').innerHTML=ZOOMS.map(([n],i)=>`<button class="chip ${i===1?'on':''}" type="button" data-z="${i}">${n}</button>`).join('');
+$('zooms').addEventListener('click',e=>{const b=e.target.closest('[data-z]');if(!b)return;zoomI=+b.dataset.z;document.querySelectorAll('#zooms .chip').forEach((c,i)=>c.classList.toggle('on',i===zoomI));animVB(ZOOMS[zoomI][1])});
+function animVB(to){const from=[...vb];if(matchMedia('(prefers-reduced-motion:reduce)').matches){vb=to;renderMap();return}const t0=performance.now();const step=t=>{const k=Math.min(1,(t-t0)/450),e=1-Math.pow(1-k,3);vb=from.map((v,i)=>v+(to[i]-v)*e);renderMap();if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step)}
+function renderMap(){
+ const sc=vb[2]/1000;const svg=$('world');svg.setAttribute('viewBox',vb.join(' '));
+ if(!svg.dataset.base){svg.innerHTML=`<path class="sea" d="${MAP.sphere}"/><path class="landP" d="${MAP.land}"/><g id="pins"></g>`;svg.dataset.base=1}
+ const live=r=>EV.some(e=>e.region===r&&Math.abs(e.year-year)<=150);
+ $('pins').innerHTML=Object.entries(PTS).map(([r,[x,y]])=>{const [dx,dy,an]=LBL[r]||[9,4,'start'];const L=live(r);const rr=(L?6:4.6)*sc*1.6;return `<g class="pin ${L?'live':''} ${mapSel===r?'sel':''}" data-r="${r}" tabindex="0" role="button" aria-label="${r} 지역 보기${L?', 이 시기에 사건 있음':''}"><circle class="ring" cx="${x}" cy="${y}" r="${rr}"/><circle class="dot" cx="${x}" cy="${y}" r="${rr}"/><text x="${x+dx*sc*1.6}" y="${y+dy*sc*1.6}" text-anchor="${an}" font-size="${12*sc*1.6}" stroke-width="${3*sc*1.6}">${r}</text></g>`}).join('');
+ $('mapYear').textContent=`${yLong(year)} ±150년`;
+ renderRegionCard()}
+$('world').addEventListener('click',e=>{const p=e.target.closest('[data-r]');if(p)selectRegion(p.dataset.r)});
+$('world').addEventListener('keydown',e=>{const p=e.target.closest('[data-r]');if(p&&(e.key==='Enter'||e.key===' ')){e.preventDefault();selectRegion(p.dataset.r)}});
+function selectRegion(r){mapSel=r;renderMap()}
+function strip(evs,h=46){const TW=W+PADL*2;let s=`<svg viewBox="0 0 ${TW} ${h}" preserveAspectRatio="none" style="width:100%;height:${h}px;display:block" aria-hidden="true"><line x1="${PADL}" y1="${h/2}" x2="${W+PADL}" y2="${h/2}" style="stroke:var(--line)" vector-effect="non-scaling-stroke"/>`;let x=PADL;ERAS.forEach(([,,n,w],i)=>{s+=`<line x1="${x}" y1="${h/2-6}" x2="${x}" y2="${h/2+6}" style="stroke:var(--sub)" vector-effect="non-scaling-stroke"/>`;x+=w});s+=`<rect x="${X(year)-1.5}" y="2" width="3" height="${h-4}" style="fill:var(--ink)" opacity=".5"/>`;evs.forEach(e=>s+=`<rect x="${X(e.year)-4}" y="${h/2-8}" width="8" height="16" style="fill:var(--ink)"/>`);return s+'</svg>'}
+function renderRegionCard(){
+ const el=$('regionCard');
+ if(!mapSel){const liveR=Object.keys(PTS).filter(r=>EV.some(e=>e.region===r&&Math.abs(e.year-year)<=150));
+  el.innerHTML=`<span class="mono" style="color:var(--ink)">${yLong(year)} 무렵</span><h3>움직이던 땅 ${liveR.length}곳</h3><p class="sub">${liveR.length?esc(liveR.join(' · ')):'이 시기 앞뒤 150년 안에는 연표에 기록된 사건이 없어요.'}</p><p class="sub" style="font-size:13px">지도의 점을 누르면 그 지역의 사건을 시간순으로 볼 수 있어요.</p>`;return}
+ const evs=sorted.filter(e=>e.region===mapSel);const nearId=evs.length?[...evs].sort((a,b)=>Math.abs(a.year-year)-Math.abs(b.year-year))[0].id:null;
+ const ci=civByName(mapSel);
+ el.innerHTML=`<span class="mono" style="color:var(--ink)">${LANES[laneOf(mapSel)].n}</span><h3>${esc(mapSel)}</h3><p class="sub" style="font-size:13px">사건 ${evs.length}개 · 세로 막대는 현재 커서(${yLong(year)})</p><div class="strip">${strip(evs)}</div><ol>${evs.map(e=>`<li class="${e.id===nearId?'near':''}"><button type="button" data-ev="${e.id}"><span class="yy">${yLong(e.year)}</span><span>${esc(e.title)}</span></button></li>`).join('')}</ol><div class="ctrl"><button class="btn" type="button" id="toChron">연대기에서 이 지역만 보기</button>${ci>=0?`<button class="btn ghost" type="button" id="toCiv">문명 아카이브 열기</button>`:''}<button class="chip" type="button" id="mapClear">선택 해제</button></div>`;
+ $('toChron').onclick=()=>{setChronRegion(mapSel);$('chronsec').scrollIntoView()};
+ if(ci>=0)$('toCiv').onclick=()=>{openCiv(ci);$('archsec').scrollIntoView()};
+ $('mapClear').onclick=()=>{mapSel=null;renderMap()}}
+
+/* ---------- chronicle ---------- */
+let cRegion='전체',cPeriod='all',cQuery='',cLimit=15;
+const REGS=['전체',...LANES.flatMap(l=>l.r)];
+function setChronRegion(r){cRegion=r;cLimit=15;renderPills();renderChron()}
+function renderPills(){$('regionPills').innerHTML=REGS.map(r=>`<button type="button" class="chip ${r===cRegion?'on':''}" data-reg="${r}" aria-pressed="${r===cRegion}">${r}</button>`).join('')}
+$('regionPills').addEventListener('click',e=>{const b=e.target.closest('[data-reg]');if(b)setChronRegion(b.dataset.reg)});
+function chronList(){return sorted.filter(d=>(cRegion==='전체'||d.region===cRegion)&&(cPeriod==='all'||(cPeriod==='ancient'?d.year<=500:cPeriod==='medieval'?d.year>500&&d.year<=1500:d.year>1500))&&[d.title,d.region,d.desc,d.bible,d.korea].join(' ').toLowerCase().includes(cQuery))}
+function renderChron(){const f=chronList();$('count').textContent=`${f.length}개 사건 · ${Math.min(cLimit,f.length)}개 표시`;
+ $('chron').innerHTML=f.slice(0,cLimit).map(d=>{const outs=LINKS.filter(l=>l[0]===d.id).length,ins=LINKS.filter(l=>l[1]===d.id).length;return `<li class="row" tabindex="0" role="button" data-ev="${d.id}" aria-label="${esc(yLong(d.year)+' '+d.title)} 자세히 보기"><span class="yr">${yBig(d.year)}</span><span class="ph">${tile(d.region,d.year)}</span><div style="min-width:0"><div class="rt">${esc(d.title)}</div><p class="rd">${esc(d.desc)}</p><div class="lay"><span>성경</span><p>${esc(d.bible)}</p><span>한국</span><p>${esc(d.korea)}</p></div></div><div class="meta"><span class="badge">${esc(d.region)}</span>${ins+outs?`<span>연결 ${ins+outs}</span>`:''}${done.has(d.id)?'<span class="badge ok">학습 완료</span>':''}</div></li>`}).join('')||'<li class="sub" style="padding:30px 0">조건에 맞는 사건이 없어요. 다른 지역이나 시대를 골라 보세요.</li>';
+ $('moreWrap').innerHTML=cLimit<f.length?`<button class="btn ghost" type="button" id="more">다음 ${Math.min(15,f.length-cLimit)}개 더 보기</button>`:'';
+ const m=$('more');if(m)m.onclick=()=>{cLimit+=15;renderChron()}}
+$('chron').addEventListener('click',e=>{const r=e.target.closest('[data-ev]');if(r)openEvent(+r.dataset.ev)});
+$('chron').addEventListener('keydown',e=>{const r=e.target.closest('[data-ev]');if(r&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openEvent(+r.dataset.ev)}});
+$('search').addEventListener('input',e=>{cQuery=e.target.value.trim().toLowerCase();cLimit=15;renderChron()});
+$('period').addEventListener('change',e=>{cPeriod=e.target.value;cLimit=15;renderChron()});
+
+/* ---------- drawer ---------- */
+let dCtx=null, lastFocus=null;
+function openDrawer(html,ctx){lastFocus=document.activeElement;dCtx=ctx;$('dBody').innerHTML=html;$('dBody').scrollTop=0;$('drawer').classList.add('on');$('drawer').setAttribute('aria-hidden','false');$('scrim').classList.add('on');document.body.style.overflow='hidden';$('dClose').focus({preventScroll:true});
+ $('dPrev').disabled=!ctx.prev;$('dNext').disabled=!ctx.next;$('dPrev').style.opacity=ctx.prev?1:.4;$('dNext').style.opacity=ctx.next?1:.4}
+function closeDrawer(){$('drawer').classList.remove('on');$('drawer').setAttribute('aria-hidden','true');$('scrim').classList.remove('on');document.body.style.overflow='';if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true})}
+$('dClose').onclick=closeDrawer;$('scrim').onclick=closeDrawer;
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('drawer').classList.contains('on'))closeDrawer()});
+$('dPrev').onclick=()=>dCtx&&dCtx.prev&&dCtx.prev();$('dNext').onclick=()=>dCtx&&dCtx.next&&dCtx.next();
+function relatedBooks(e){return BOOKS.map((b,i)=>({b,i})).filter(({b})=>b.region===e.region&&(Math.abs(b.y-e.year)<=600||(b.set&&e.year>=b.set[0]-100&&e.year<=b.set[1]+100))).slice(0,4)}
+function openEvent(id){
+ const e=EV[id];const idx=sorted.findIndex(x=>x.id===id);
+ const ins=LINKS.filter(l=>l[1]===id),outs=LINKS.filter(l=>l[0]===id);
+ const same=EV.filter(x=>laneOf(x.region)!==laneOf(e.region)&&Math.abs(x.year-e.year)<=150).sort((a,b)=>Math.abs(a.year-e.year)-Math.abs(b.year-e.year)).slice(0,6);
+ const bks=relatedBooks(e);const ci=civByName(e.region==='지중해'?'그리스':e.region);
+ const relBtn=(x,dir,lab)=>`<button type="button" data-go="${x.id}"><span class="dir">${dir}</span><span><span class="tt">${esc(x.title)}</span><small>${yLong(x.year)} · ${esc(x.region)}${lab?' · '+esc(lab):''}</small></span></button>`;
+ const html=`<div class="dHero">${tile(e.region,e.year)}<span class="yr">${yBig(e.year)}</span></div>
+ <div class="dTitle"><span class="mono">${esc(e.region)} · ${eraOf(e.year)}</span><h3 id="dTitle">${esc(e.title)}</h3></div>
+ <div class="dSec"><h4>세 겹의 시간</h4><div class="strata"><div class="stratum"><span>세계사</span><p>${esc(e.desc)}</p></div><div class="stratum"><span>성경 연구</span><p>${esc(e.bible)}</p></div><div class="stratum"><span>한국</span><p>${esc(e.korea)}</p></div></div></div>
+ ${ins.length||outs.length?`<div class="dSec"><h4>원인과 결과</h4><div class="rel">${ins.map(l=>relBtn(EV[l[0]],'배경 ←',l[2])).join('')}${outs.map(l=>relBtn(EV[l[1]],'→ 이어짐',l[2])).join('')}</div></div>`:''}
+ <div class="dSec"><h4>같은 시간, 다른 곳</h4>${same.length?`<div class="rel">${same.map(x=>`<button type="button" data-go="${x.id}"><span class="dir">${dYears(e.year,x.year)}</span><span><span class="tt">${esc(x.title)}</span><small>${esc(x.region)} · ${yLong(x.year)}</small></span></button>`).join('')}</div>`:'<p class="sub">앞뒤 150년 안에 다른 지역의 기록된 사건이 없어요.</p>'}</div>
+ ${bks.length?`<div class="dSec"><h4>함께 읽을 고전</h4><div class="rel">${bks.map(({b,i})=>`<button type="button" data-gobk="${i}"><span class="dir">고전</span><span><span class="tt">${esc(b.title)}</span><small>${esc(b.era)} · ${esc(b.author)}</small></span></button>`).join('')}</div></div>`:''}
+ <div class="dSec ctrl"><button class="btn ghost" type="button" id="dToLane">연표에서 이 시점 보기</button>${ci>=0?`<button class="btn ghost" type="button" id="dToCiv">${esc(CIVS[ci].name)} 문명 아카이브</button>`:''}</div>
+ <div class="dSec"><h4>나의 연구 노트</h4><textarea class="notes" id="evNote" placeholder="궁금한 점, 성경 본문, 더 연구할 내용을 기록하세요.">${esc(st.getRaw('historyNoteV3_'+id))}</textarea><div class="saveRow"><button class="btn ghost" type="button" id="evSave">노트 저장</button><button class="btn" type="button" id="evDone">${done.has(id)?'학습 완료 취소':'학습 완료'}</button><span class="status" id="evStatus" role="status"></span></div></div>`;
+ openDrawer(html,{prev:idx>0?()=>openEvent(sorted[idx-1].id):null,next:idx<sorted.length-1?()=>openEvent(sorted[idx+1].id):null});
+ $('dBody').querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>openEvent(+b.dataset.go));
+ $('dBody').querySelectorAll('[data-gobk]').forEach(b=>b.onclick=()=>openBook(+b.dataset.gobk));
+ $('dToLane').onclick=()=>{closeDrawer();setYear(e.year,{scroll:true});hot(id);$('lanesec').scrollIntoView()};
+ if(ci>=0)$('dToCiv').onclick=()=>{closeDrawer();openCiv(ci);$('archsec').scrollIntoView()};
+ $('evSave').onclick=()=>{$('evStatus').textContent=st.set('historyNoteV3_'+id,$('evNote').value)?'저장했어요':'이 브라우저에서는 저장할 수 없어요';renderRecords()};
+ $('evDone').onclick=()=>{done.has(id)?done.delete(id):done.add(id);st.set('historyDoneV3',[...done]);$('evDone').textContent=done.has(id)?'학습 완료 취소':'학습 완료';$('evStatus').textContent=done.has(id)?'학습 완료로 표시했어요':'완료 표시를 취소했어요';renderChron();renderRecords();drawLanes()}}
+function gapChart(b){
+ const lo=Math.min(b.y,b.set?b.set[0]:b.y),hi=Math.max(b.y,b.set?b.set[1]:b.y);const span=Math.max(400,hi-lo);const a=lo-span*.15,z=hi+span*.15;const Wd=520,P=20;const sx=y=>P+(y-a)/(z-a)*(Wd-2*P);
+ let s=`<svg viewBox="0 0 ${Wd} 96" aria-label="기록 시점과 배경 시대"><line class="base" x1="${P}" y1="60" x2="${Wd-P}" y2="60"/>`;
+ const step=span>2000?1000:span>800?250:100;for(let t=Math.ceil(a/step)*step;t<=z;t+=step){s+=`<line class="base" x1="${sx(t)}" y1="56" x2="${sx(t)}" y2="64"/><text x="${sx(t)}" y="80" text-anchor="middle">${t<0?'BC'+(-t):t}</text>`}
+ if(b.set){const x1=sx(b.set[0]),x2=sx(b.set[1]);s+=`<rect class="s" x="${x1}" y="54" width="${Math.max(4,x2-x1)}" height="12"/><text class="lab" x="${Math.max(P,Math.min(x1,Wd-180))}" y="44" style="fill:var(--sub)">배경</text>`;const mid=(x1+x2)/2;if(Math.abs(sx(b.y)-mid)>10)s+=`<path class="ar" d="M${mid} 54Q${(mid+sx(b.y))/2} 14 ${sx(b.y)} 52"/>`}
+ s+=`<rect class="w" x="${sx(b.y)-5}" y="55" width="10" height="10" transform="rotate(45 ${sx(b.y)} 60)"/><text class="lab" x="${sx(b.y)}" y="${b.set?28:44}" text-anchor="middle">기록</text></svg>`;return s}
+function openBook(i){
+ const b=BOOKS[i];const evs=sorted.filter(e=>e.region===b.region&&(Math.abs(e.year-b.y)<=400||(b.set&&e.year>=b.set[0]-150&&e.year<=b.set[1]+150))).slice(0,5);
+ let gapTxt='';if(b.set){const m=Math.round((b.set[0]+b.set[1])/2);const g=b.y-b.set[1];gapTxt=g>20?`이야기의 배경(${esc(b.sl)})과 기록 시점 사이에 약 ${g.toLocaleString()}년의 거리가 있습니다.`:`배경: ${esc(b.sl)}. 사건과 기록이 거의 같은 시기입니다.`}else gapTxt='배경 시대를 하나의 연도로 특정하기 어려운 작품입니다. 기록 시점만 표시했습니다.';
+ const html=`<div class="dHero">${tile(b.region,Math.min(b.y,1899))}<span class="yr" style="font-size:46px">${esc(b.title)}</span></div>
+ <div class="dTitle"><span class="mono">${esc(b.region)} · 고전</span><h3 id="dTitle">${esc(b.title)}</h3><p class="sub">${esc(b.era)} · ${esc(b.author)}</p></div>
+ <div class="dSec"><h4>기록 시점과 배경 시대</h4><div class="gap">${gapChart(b)}</div><p class="sub" style="margin-top:8px;font-size:13.5px">${gapTxt}</p></div>
+ <div class="dSec"><h4>이야기</h4><p>${esc(b.story)}</p></div>
+ <div class="dSec"><h4>주요 인물 · 주제</h4><div class="strata"><div class="stratum"><span>인물</span><p>${esc(b.people)}</p></div><div class="stratum"><span>주제</span><p>${esc(b.themes)}</p></div>${b.bible?`<div class="stratum"><span>성경 비교</span><p>${esc(b.bible)}</p></div>`:''}</div>${b.point?`<p class="sub" style="margin-top:10px;font-size:13.5px">읽기 포인트 · ${esc(b.point)}</p>`:''}</div>
+ ${evs.length?`<div class="dSec"><h4>연결된 사건</h4><div class="rel">${evs.map(x=>`<button type="button" data-go="${x.id}"><span class="dir">${yLong(x.year).replace('기원전 ','BC ')}</span><span><span class="tt">${esc(x.title)}</span><small>${esc(x.region)}</small></span></button>`).join('')}</div></div>`:''}
+ <p class="sub" style="font-size:12.5px">작품 속 사건은 실제 역사와 다를 수 있습니다. 작품의 성립 시기와 배경 시대를 구분해서 읽어 주세요.</p>`;
+ openDrawer(html,{prev:i>0?()=>openBook(i-1):null,next:i<BOOKS.length-1?()=>openBook(i+1):null});
+ $('dBody').querySelectorAll('[data-go]').forEach(x=>x.onclick=()=>openEvent(+x.dataset.go))}
+
+/* ---------- archive ---------- */
+let civI=0;
+$('civIdx').innerHTML=CIVS.map((c,i)=>`<button type="button" role="tab" data-civ="${i}"><span class="ph">${tile(c.name,0)}</span><span>${esc(c.name)}<small>${esc(c.path.split(' → ').slice(0,2).join(' → '))}</small></span></button>`).join('');
+$('civIdx').addEventListener('click',e=>{const b=e.target.closest('[data-civ]');if(b)openCiv(+b.dataset.civ)});
+function cmpChart(c){
+ const kc=CIVS.find(x=>x.name==='한국');const evs=sorted.filter(e=>e.region===c.name);const kevs=sorted.filter(e=>e.region==='한국');
+ const CW=1000,H=136,P=56;const sx=y=>P+(X(y)-PADL)/W*(CW-P-16);
+ let s=`<svg viewBox="0 0 ${CW} ${H}" aria-label="${esc(c.name)}와 한국의 시간축 비교">`;
+ let x=PADL;ERAS.forEach(([a,b,n,w],i)=>{const x0=sx(a),x1=sx(b);if(i%2)s+=`<rect class="era" x="${x0}" y="0" width="${x1-x0}" height="${H}"/>`;s+=`<text x="${x0+5}" y="14">${n}</text>`});
+ s+=`<line class="base" x1="${P}" y1="52" x2="${CW-16}" y2="52"/><line class="base" x1="${P}" y1="104" x2="${CW-16}" y2="104"/>`;
+ s+=`<text class="lab" x="6" y="56">${esc(c.name.length>4?c.name.slice(0,4):c.name)}</text><text class="lab" x="6" y="108">한국</text>`;
+ c.years.forEach(y=>s+=`<rect class="yb" x="${sx(y)-1}" y="44" width="2" height="16"/>`);
+ let last=-1e9;c.years.slice().sort((a,b)=>a-b).forEach(y=>{if(sx(y)-last>38){s+=`<text x="${sx(y)}" y="74" text-anchor="middle">${y<0?'BC'+(-y):y}</text>`;last=sx(y)}});
+ evs.forEach(e=>s+=`<circle class="ev" cx="${sx(e.year)}" cy="52" r="5" data-ev="${e.id}"><title>${esc(yLong(e.year)+' '+e.title)}</title></circle>`);
+ if(c.name!=='한국'){kc.years.forEach(y=>s+=`<rect class="kb" x="${sx(y)-1}" y="96" width="2" height="16"/>`);let l2=-1e9;kc.years.forEach(y=>{if(sx(y)-l2>38){s+=`<text x="${sx(y)}" y="126" text-anchor="middle">${y<0?'BC'+(-y):y}</text>`;l2=sx(y)}});kevs.forEach(e=>s+=`<circle class="kev" cx="${sx(e.year)}" cy="104" r="5" data-ev="${e.id}"><title>${esc(yLong(e.year)+' '+e.title)}</title></circle>`)}
+ return s+'</svg>'}
+function openCiv(i){civI=i;const c=CIVS[i];
+ document.querySelectorAll('#civIdx [data-civ]').forEach((b,j)=>{b.classList.toggle('on',j===i);b.setAttribute('aria-selected',j===i)});
+ const evs=sorted.filter(e=>e.region===c.name);const bks=BOOKS.map((b,k)=>({b,k})).filter(x=>x.b.region===c.name);
+ const chs=c.chapters.map((ch,k)=>{const key=c.ri+'-'+k;return `<div class="chap"><span class="mono" style="color:var(--ink)">${esc(ch.p)}</span><h5>${esc(ch.t)}</h5><div class="strata"><div class="stratum"><span>역사</span><p>${esc(ch.h)}</p></div><div class="stratum"><span>성경</span><p>${esc(ch.b)}</p></div><div class="stratum"><span>한국</span><p>${esc(ch.k)}</p></div></div><div><button class="chip ${chDone[key]?'on':''}" type="button" data-ch="${key}" aria-pressed="${!!chDone[key]}">${chDone[key]?'학습 완료':'학습 완료 표시'}</button></div></div>`}).join('');
+ $('civView').innerHTML=`<div class="civHead"><span class="ph">${tile(c.name,0)}</span><div><span class="mono" style="color:var(--ink)">${c.tag?esc(c.tag):'문명·왕조 심화'}</span><h3>${esc(c.name)}의 역사</h3><div class="flow">${c.path.split(' → ').map(p=>`<span>${esc(p)}</span>`).join('')}</div></div></div>
+ <div class="civBody">
+  <div><h4>시간축 비교 · ${esc(c.name)} × 한국</h4><div class="cmp">${cmpChart(c)}</div><p class="sub" style="font-size:12.5px;margin-top:6px">막대는 왕조 전환 연도, 원은 연표의 사건입니다. 원을 누르면 사건이 열립니다.</p></div>
+  <div><h4>건국부터 변화까지</h4><p class="story">${esc(c.story)}</p></div>
+  ${chs?`<div><h4>강의 노트 ${c.chapters.length}장</h4><div style="display:flex;flex-direction:column;gap:18px">${chs}</div></div>`:''}
+  <div class="three"><div><b>읽어 볼 사료</b>${esc(c.sources)}</div><div><b>성경 연구의 연결점</b>${esc(c.bible)}</div><div><b>동시대 한국사</b>${esc(c.korea)}</div></div>
+  ${evs.length?`<div><h4>연표의 사건</h4><div class="linkList">${evs.map(e=>`<button class="chip" type="button" data-ev="${e.id}">${yLong(e.year)} ${esc(e.title)}</button>`).join('')}</div></div>`:''}
+  ${bks.length?`<div><h4>이 문명의 고전</h4><div class="linkList">${bks.map(({b,k})=>`<button class="chip" type="button" data-bk="${k}">${esc(b.title)}</button>`).join('')}</div></div>`:''}
+  <details class="quiz"><summary>확인 질문 · ${esc(c.name)}의 역사에서 ‘직접 확인된 사료’와 ‘후대 전승’을 구분해야 하는 이유는?</summary><p>역사 기록과 문학·전승은 만들어진 시기와 목적이 다를 수 있습니다. 같은 시대라는 사실만으로 두 사건 사이의 인과관계를 주장할 수는 없습니다.</p></details>
+ </div>`;
+ $('civView').querySelectorAll('.cmp [data-ev]').forEach(n=>n.addEventListener('click',()=>openEvent(+n.dataset.ev)))}
+$('civView').addEventListener('click',e=>{const b=e.target.closest('[data-ch]');if(!b)return;const k=b.dataset.ch;chDone[k]=!chDone[k];st.set('hd-v6-done',chDone);b.classList.toggle('on',chDone[k]);b.textContent=chDone[k]?'학습 완료':'학습 완료 표시';b.setAttribute('aria-pressed',chDone[k]);renderRecords()});
+
+/* ---------- books ---------- */
+function renderBooks(){const q=$('bookSearch').value.trim().toLowerCase();const list=BOOKS.map((b,i)=>({b,i})).filter(({b})=>[b.title,b.region,b.author,b.people,b.story].join(' ').toLowerCase().includes(q));
+ $('bookGrid').innerHTML=list.length?list.map(({b,i})=>`<button class="book" type="button" data-book="${i}"><span class="ph">${tile(b.region,Math.min(b.y,1899))}<span class="cap">${b.y<0?'BC '+(-b.y):b.y}${b.set&&b.y-b.set[1]>20?' · 배경 '+(b.set[0]<0?'BC '+(-b.set[0]):b.set[0]):''}</span></span><b>${esc(b.title)}</b><small>${esc(b.region)} · ${esc(b.author)}</small></button>`).join(''):'<p class="sub">검색 결과가 없어요.</p>'}
+$('bookSearch').addEventListener('input',renderBooks);
+$('bookGrid').addEventListener('click',e=>{const b=e.target.closest('[data-book]');if(b)openBook(+b.dataset.book)});
+
+/* ---------- records ---------- */
+const CH_TOTAL=CIVS.reduce((s,c)=>s+c.chapters.length,0);
+function renderRecords(){const ce=Object.values(chDone).filter(Boolean).length;
+ $('mEv').innerHTML=`${done.size}<span class="sub" style="font-size:.45em"> / ${EV.length}</span>`;$('bEv').style.width=(100*done.size/EV.length)+'%';
+ $('mCh').innerHTML=`${ce}<span class="sub" style="font-size:.45em"> / ${CH_TOTAL}</span>`;$('bCh').style.width=(100*ce/CH_TOTAL)+'%';
+ $('doneChips').innerHTML=done.size?[...done].sort((a,b)=>EV[a].year-EV[b].year).map(id=>`<button class="chip" type="button" data-ev="${id}">${esc(EV[id].title)}</button>`).join(''):'<p class="sub" style="font-size:13px">아직 완료한 사건이 없어요. 사건을 열고 ‘학습 완료’를 눌러 보세요.</p>'}
+$('memo').value=st.getRaw('hd-v6-memo');
+$('memoSave').onclick=()=>{$('memoStatus').textContent=st.set('hd-v6-memo',$('memo').value)?'저장했어요':'이 브라우저에서는 저장할 수 없어요'};
+function exportText(){let t='역사의 날들 연구 노트\n\n'+$('memo').value+'\n\n완료한 사건 '+done.size+'개 · 완료한 강의 '+Object.values(chDone).filter(Boolean).length+'개\n';EV.forEach(e=>{const n=st.getRaw('historyNoteV3_'+e.id);if(n)t+=`\n[${yLong(e.year)} ${e.title}]\n${n}\n`});return t}
+$('memoCopy').onclick=async()=>{const t=exportText();try{await navigator.clipboard.writeText(t);$('memoStatus').textContent='전체 기록을 복사했어요'}catch{$('memo').select();$('memoStatus').textContent='복사가 막혀 있어요. 노트를 선택해 두었으니 직접 복사해 주세요'}};
+$('memoExport').onclick=()=>{try{const blob=new Blob([exportText()],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='역사의날들-연구노트.txt';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),2000);$('memoStatus').textContent='파일을 내려받았어요'}catch{$('memoStatus').textContent='이 화면에서는 파일을 내려받을 수 없어요. 복사를 이용해 주세요'}};
+
+/* ---------- init ---------- */
+drawLanes();setYear(year);renderPills();renderChron();openCiv(0);renderBooks();renderRecords();
+requestAnimationFrame(()=>{const sc=$('laneScroll');sc.scrollLeft=X(year)-sc.clientWidth/2});
+})();
+</script>
+
+</body></html>
